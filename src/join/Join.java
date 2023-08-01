@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +14,7 @@ public class Join {
 	public boolean joinst(String id, String password) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO `team3`.`user` (`userId`, `userPassword`, `point`, `exp`) VALUES (?, ?, '0', '0');";
+		String sql = "INSERT INTO `team3`.`user` (`userId`, `userPassword`) VALUES (?, ?);";
 
 		try {
 			conn = DBUtil.getConnection();
@@ -29,7 +30,6 @@ public class Join {
 				return true;
 			} else {
 				// 회원 가입이 실패한 경우, 반환할 메시지를 설정합니다.
-				System.out.println("dd");
 				return false;
 			}
 
