@@ -2,12 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
   <display-name>333</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+
+    <welcome-file>insert.jsp</welcome-file>
+
   </welcome-file-list>
     <servlet>
   	<servlet-name>login</servlet-name>
@@ -19,7 +16,7 @@
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   
-<!-- 
+
   <servlet>
   	<servlet-name>joing</servlet-name>
   	<servlet-class>join.Joininfo</servlet-class>
@@ -29,7 +26,7 @@
   	<servlet-name>joing</servlet-name>
   	<url-pattern>/join</url-pattern>
   </servlet-mapping>
- -->
+
   
   
 </web-app>
