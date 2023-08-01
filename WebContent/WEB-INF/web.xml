@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
     <servlet>
   	<servlet-name>login</servlet-name>
   	<servlet-class>plant.Loginfo</servlet-class>
@@ -20,6 +19,7 @@
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   
+<!-- 
   <servlet>
   	<servlet-name>joing</servlet-name>
   	<servlet-class>join.Joininfo</servlet-class>
@@ -29,6 +29,7 @@
   	<servlet-name>joing</servlet-name>
   	<url-pattern>/join</url-pattern>
   </servlet-mapping>
+ -->
   
   
 </web-app>
