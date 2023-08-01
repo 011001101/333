@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import dbutil.DBUtil;
 
 public class Login {
-	public String loginst(String id, String password) {
+	public boolean loginst(String id, String password) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -22,9 +22,8 @@ public class Login {
 			stmt.setString(2, password);
 
 			rs = stmt.executeQuery();
-			while (rs.next()) {
-				String a = "yes";
-				return a;
+			if (rs.next()) {
+				return false;
 			}
 
 		} catch (SQLException e) {
@@ -34,6 +33,6 @@ public class Login {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-		return "no";
+		return true;
 	}
 }
