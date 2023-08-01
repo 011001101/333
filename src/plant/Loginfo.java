@@ -20,8 +20,7 @@ public class Loginfo extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = (String) req.getParameter("id");
 		String password = (String) req.getParameter("password");
-		Login login = new Login();
-		login.loginst(id, password);
+		Login a = new Login();
+		System.out.println(a.loginst(id, password));
 	}
-	
 }

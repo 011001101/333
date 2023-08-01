@@ -12,7 +12,7 @@ public class Login {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from student where id = ? and password = ?";
+		String sql = "select * from user where userId = ? and userPassword = ?";
 
 		try {
 			conn = DBUtil.getConnection();
@@ -34,6 +34,6 @@ public class Login {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-		return null;
+		return "no";
 	}
 }
