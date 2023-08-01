@@ -9,7 +9,7 @@
 <body>
 	<form method="post">
 		<input type="text" name="id"><br>
-		<input type="password" name="password"><br>
+		<input type="password" name="pw"><br>
 		<input type=submit value="가입하기">
 	</form>
 	<a href="insert.jsp">되돌아가기</a>

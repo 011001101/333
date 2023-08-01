@@ -10,10 +10,10 @@ import java.util.regex.Pattern;
 import dbutil.DBUtil;
 
 public class Join {
-	public String joinst(String id, String password) {
+	public boolean joinst(String id, String password) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		String sql = "insert into join (id, password) values (?,?);";
+		String sql = "INSERT INTO `team3`.`user` (`userId`, `userPassword`, `point`, `exp`) VALUES (?, ?, '0', '0');";
 
 		try {
 			conn = DBUtil.getConnection();
@@ -26,10 +26,11 @@ public class Join {
 
 			if (rowsAffected > 0) {
 				// 회원 가입이 성공적으로 이루어졌으므로, 반환할 메시지를 설정합니다.
-				return "회원가입에 성공했습니다.";
+				return true;
 			} else {
 				// 회원 가입이 실패한 경우, 반환할 메시지를 설정합니다.
-				return "회원가입에 실패했습니다.";
+				System.out.println("dd");
+				return false;
 			}
 
 		} catch (SQLException e) {
@@ -38,7 +39,7 @@ public class Join {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-		return "회원가입에 실패했습니다.";
+		return false;
 	}
 
 	public static boolean validateId(String id) {
@@ -49,7 +50,7 @@ public class Join {
 	}
 
 	// 비밀번호 패턴 검증 메소드
-	private static boolean validatePassword(String password) {
+	public static boolean validatePassword(String password) {
 		// 영소문자, 대문자, 숫자, 특수문자가 최소 1개 이상 포함되어야 함
 		Pattern pattern = Pattern.compile("[a-zA-Z0-9!@#$%^&*]{8,20}");
 		Matcher matcher = pattern.matcher(password);

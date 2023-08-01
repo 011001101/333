@@ -15,19 +15,28 @@ public class Joininfo extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/join.jsp").forward(req, resp);
-	
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = (String) req.getParameter("id");
 		String password = (String) req.getParameter("pw");
-		
-		resp.setContentType("text/html; charset=utf-8");
-		PrintWriter writer = resp.getWriter();
-		writer.println(id + "님 회원가입되셨습니다.");
-		writer.println("환영합니다.");
-		writer.close();
-		doGet(req, resp);
+
+		Join join = new Join();
+		if (Join.validateId(id) && Join.validatePassword(password)) {
+			if (join.joinst(id, password)) {
+				resp.setContentType("text/html; charset=utf-8");
+				PrintWriter writer = resp.getWriter();
+				writer.println(id + "님 회원가입되셨습니다.");
+				writer.println("환영합니다.");
+				writer.close();
+				doGet(req, resp);
+			}else {
+				System.out.println("실패2");
+			}
+		}else {
+			System.out.println("실패1");
+		}
 	}
 }
