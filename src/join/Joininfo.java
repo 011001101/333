@@ -9,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet
+@WebServlet("/join")
 public class Joininfo extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	resp.getWriter().append("Servrd at: ").append(req.getContextPath());
-	System.out.println("ok");
+		req.getRequestDispatcher("/join.jsp").forward(req, resp);
 	
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String pw = req.getParameter("pw");
+		String id = (String) req.getParameter("id");
+		String password = (String) req.getParameter("pw");
 		
 		resp.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = resp.getWriter();

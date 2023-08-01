@@ -13,5 +13,6 @@
 		<input type="password" name="password">
 		<input type="submit">
 	</form>
+	<a href="insert.jsp">되돌아가기</a>
 </body>
 </html>

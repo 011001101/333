@@ -8,10 +8,10 @@
 </head>
 <body>
 	<form method="post">
-		<input type="text" name="id">
-		<input type="password" name="password">
+		<input type="text" name="id"><br>
+		<input type="password" name="password"><br>
 		<input type=submit value="가입하기">
-		<input type=reset value="취소">
 	</form>
+	<a href="insert.jsp">되돌아가기</a>
 </body>
 </html>
