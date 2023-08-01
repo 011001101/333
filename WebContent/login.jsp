@@ -16,6 +16,7 @@
 		</c:if>
 		<input type="submit">
 	</form>
+	<a href="insert.jsp">되돌아가기</a>
 </body>
 <%session.removeAttribute("no"); %>
 </html>
