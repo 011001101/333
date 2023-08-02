@@ -9,8 +9,8 @@
 </head>
 <body>
 	<form method="post">
-		<p><input type="text" name="id"> </p>
-		<p><input type="password" name="password"></p>
+		<p>아이디 <input type="text" name="id"> </p>
+		<p>비밀번호 <input type="password" name="password"></p>
 		<c:if test="${ not empty no }">
 		<p style="color: red">아이디나 비밀번호를 확인하세요</p>
 		</c:if>
