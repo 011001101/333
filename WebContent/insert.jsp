@@ -7,7 +7,7 @@
 <title>insert</title>
 </head>
 <body>
-	<a href="login.jsp">로그인</a>
-	<a href="join.jsp">회원가입</a>
+	<a href="login">로그인</a>
+	<a href="join">회원가입</a>
 </body>
 </html>
