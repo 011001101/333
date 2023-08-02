@@ -1,0 +1,257 @@
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  align-self: center;
+  background: url("img/map.png") no-repeat;
+  background-position: center, 60%;
+  background-size: cover;
+  overflow-x: hidden;
+}
+.map .Garden {
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  cursor: default;
+  transition: all 0.3s ease;
+  margin-left: 30vw;
+}
+.map .Garden .MAP-inner {
+  background: #d3e9f8;
+  padding: 10px 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 20px);
+  transition: inherit;
+}
+.map .Garden .title {
+  font: 700 34px/1.3 "Poppins", sans-serif;
+  margin: 0.3em 0 0;
+  transition: 0.8s ease 600ms;
+}
+.map .Garden .description {
+  font: 500 12px "Poppins", sans-serif;
+  margin-top: -0.2em;
+}
+.map .Garden:after {
+  z-index: 10;
+  content: attr(data-description);
+  background: #f9f8f7;
+  color: #333;
+  width: 180px;
+  position: absolute;
+  top: 80%;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s, top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+  height: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 10px;
+  margin: 0 0 0 -50px;
+  border-radius: 6px;
+  text-align: center;
+}
+.map .Garden:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+.map .Garden:hover .Land-inner {
+  background: transparent;
+}
+.map .Garden:hover .title,
+.map .Garden:hover .description {
+  -webkit-text-fill-color: #222;
+}
+.map .Garden:hover:after {
+  top: 105%;
+  opacity: 1;
+}
+.map a.Garden {
+  cursor: pointer;
+}
+.map .Library {
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  cursor: default;
+  transition: all 0.3s ease;
+  margin-left: 10vw;
+}
+.map .Library .MAP-inner {
+  background: #d3e9f8;
+  padding: 10px 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 20px);
+  transition: inherit;
+}
+.map .Library .title {
+  font: 700 34px/1.3 "Poppins", sans-serif;
+  margin: 0.3em 0 0;
+  transition: 0.8s ease 600ms;
+}
+.map .Library .description {
+  font: 500 12px "Poppins", sans-serif;
+  margin-top: -0.2em;
+}
+.map .Library:after {
+  z-index: 10;
+  content: attr(data-description);
+  background: #f9f8f7;
+  color: #333;
+  width: 180px;
+  position: absolute;
+  top: 80%;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s, top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+  height: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 10px;
+  margin: 0 0 0 -50px;
+  border-radius: 6px;
+  text-align: center;
+}
+.map .Library:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+.map .Library:hover .Land-inner {
+  background: transparent;
+}
+.map .Library:hover .title,
+.map .Library:hover .description {
+  -webkit-text-fill-color: #222;
+}
+.map .Library:hover:after {
+  top: 105%;
+  opacity: 1;
+}
+.map a.Library {
+  cursor: pointer;
+}
+.map .Shop {
+  padding: 4px;
+  position: absolute;
+  margin-left: 60vw;
+  z-index: 1;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+.map .Shop .MAP-inner {
+  background: #d3e9f8;
+  padding: 10px 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 20px);
+  transition: inherit;
+}
+.map .Shop .title {
+  font: 700 34px/1.3 "Poppins", sans-serif;
+  margin: 0.3em 0 0;
+  transition: 0.8s ease 600ms;
+}
+.map .Shop .description {
+  font: 500 12px "Poppins", sans-serif;
+  margin-top: -0.2em;
+}
+.map .Shop:after {
+  z-index: 10;
+  content: attr(data-description);
+  background: #f9f8f7;
+  color: #333;
+  width: 180px;
+  position: absolute;
+  top: 80%;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s, top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+  height: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 10px;
+  margin: 0 0 0 -50px;
+  border-radius: 6px;
+  text-align: center;
+}
+.map .Shop:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+.map .Shop:hover .Land-inner {
+  background: transparent;
+}
+.map .Shop:hover .title,
+.map .Shop:hover .description {
+  -webkit-text-fill-color: #222;
+}
+.map .Shop:hover:after {
+  top: 105%;
+  opacity: 1;
+}
+.map a.Shop {
+  cursor: pointer;
+}
+.map .NPC {
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+.map .NPC .MAP-inner {
+  background: #d3e9f8;
+  padding: 10px 15px;
+  width: calc(100% - 30px);
+  height: calc(100% - 20px);
+  transition: inherit;
+}
+.map .NPC .title {
+  font: 700 34px/1.3 "Poppins", sans-serif;
+  margin: 0.3em 0 0;
+  transition: 0.8s ease 600ms;
+}
+.map .NPC .description {
+  font: 500 12px "Poppins", sans-serif;
+  margin-top: -0.2em;
+}
+.map .NPC:after {
+  z-index: 10;
+  content: attr(data-description);
+  background: #f9f8f7;
+  color: #333;
+  width: 180px;
+  position: absolute;
+  top: 80%;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s, top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+  height: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 10px;
+  margin: 0 0 0 -50px;
+  border-radius: 6px;
+  text-align: center;
+}
+.map .NPC:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+.map .NPC:hover .Land-inner {
+  background: transparent;
+}
+.map .NPC:hover .title,
+.map .NPC:hover .description {
+  -webkit-text-fill-color: #222;
+}
+.map .NPC:hover:after {
+  top: 105%;
+  opacity: 1;
+}
+.map a.NPC {
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
