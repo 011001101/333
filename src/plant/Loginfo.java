@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/login")
+
 public class Loginfo extends HttpServlet {
 
 	@Override
@@ -23,6 +23,7 @@ public class Loginfo extends HttpServlet {
 		String password = (String) req.getParameter("password");
 		Login a = new Login();
 		if (a.loginst(id, password)) {
+			System.out.println("로그인제출 진입");
 			HttpSession session = req.getSession();
 			session.setAttribute("no", "no");
 			req.getRequestDispatcher("/login.jsp").forward(req, resp);
