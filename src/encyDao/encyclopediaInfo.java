@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dbutil.DBUtil;
 
-@WebServlet("/ency")
+
 public class encyclopediaInfo extends HttpServlet {
 
 	private encyGetSet ency = new encyGetSet();
