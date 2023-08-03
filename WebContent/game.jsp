@@ -61,7 +61,7 @@ if (m.get("ok").size() > 0) {
 	    const okButtonId = <%=a%>;
 	    const okButton = document.getElementById(okButtonId);
 	    if (okButton) {
-	      okButton.innerHTML = '<img src="path/to/your/image_ok.jpg" alt="버튼 이미지">';
+	      okButton.innerHTML = '<img src="path/to/your/image_ok.jpg" alt="버튼 이미지1">';
 	    }
 	<%}
 }%>
@@ -72,7 +72,7 @@ if (m.get("ok").size() > 0) {
 		const noButtonId = "<%=a%>";
 	    const noButton = document.getElementById(noButtonId);
 	    if (noButton) {
-		    noButton.innerHTML = '<img src="path/to/your/image_no.jpg" alt="버튼 이미지">';
+		    noButton.innerHTML = '<img src="path/to/your/image_no.jpg" alt="버튼 이미지2">';
 		}
 <%}
 }%>

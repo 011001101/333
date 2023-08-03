@@ -106,10 +106,12 @@
 				const xhr = new XMLHttpRequest();
 		   		xhr.open("POST", "/333/game", true);
 		   		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-		    	xhr.onreadystatechange = function() {
+		   		const r = (row*9)+col;
+		   		localStorage.setItem("invencl", r);
+		   		xhr.onreadystatechange = function() {
 		      	if (xhr.readyState === 4 && xhr.status === 200) {
 		        	console.log(xhr.responseText);
+		        	window.location.href = "/333/game";
 		      		}
 		    	};
 		   		xhr.send("buttonId=" + encodeURIComponent(buttonId));

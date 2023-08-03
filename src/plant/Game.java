@@ -1,7 +1,6 @@
 package plant;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +43,16 @@ public class Game extends HttpServlet {
 		System.out.println(but);
 		HttpSession session = req.getSession();
 		String userid = (String) session.getAttribute("userid");
-//		newplant(userid, 2, but);
+		List<Integer> nolist = itemNo(userid);
+		String inv = (String) req.getAttribute("invencl");
+		System.out.println(inv);
+		int b = Integer.valueOf(inv);
+		if (nolist.size() >= b) {
+			newplant(userid, nolist.get(b), but);
+			System.out.println("가능");
+		} else {
+			System.out.println("불가능");
+		}
 		resp.sendRedirect("/333/game");
 	}
 
@@ -61,7 +69,7 @@ public class Game extends HttpServlet {
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, id);
+			stmt.setString(1, "aa");
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				String seat = rs.getString("seat");
@@ -95,7 +103,7 @@ public class Game extends HttpServlet {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setObject(1, date);
-			stmt.setString(2, id);
+			stmt.setString(2, "aa");
 			stmt.setInt(3, logNo);
 			stmt.setString(4, seat);
 			stmt.setObject(5, plustime);
@@ -120,10 +128,36 @@ public class Game extends HttpServlet {
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, id);
+			stmt.setString(1, "aa");
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				Blob shopNo = rs.getBlob("plantImage");
+				list.add(shopNo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(stmt);
+			DBUtil.close(conn);
+		}
+		return list;
+	}
+
+	public List<Integer> itemNo(String id) {
+		List<Integer> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT b.plantNo\r\n" + "FROM inventory AS a\r\n"
+				+ "INNER JOIN plant AS b ON a.no = b.plantNo\r\n" + "WHERE a.userId = ? AND plantGroup LIKE '%씨앗주머니%';";
+		try {
+			conn = DBUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "aa");
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				int shopNo = rs.getInt("b.plantNo");
 				list.add(shopNo);
 			}
 		} catch (SQLException e) {
