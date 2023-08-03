@@ -7,5 +7,8 @@
  }
 
  function gamego() {
-    window.location.href = "game.jsp";
+    window.location.href = "game";
+ }
+ function encyclopediaInfoGo() {
+    window.location.href = "encyDao/encyclopediaInfo.java";
  }
