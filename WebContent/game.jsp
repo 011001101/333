@@ -46,10 +46,10 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    const buttonId = button.id;
+    var buttonId = button.id;
 
     sessionStorage.setItem("buttonId", buttonId);
-    window.location = "/333/inventory.html";
+    window.location = "/333/inventory.jsp";
   });
 });
 
@@ -58,14 +58,14 @@ if (m.get("ok").size() > 0) {
 	List<String> ok = m.get("ok");
 	for (int i = 0; i < ok.size(); i++) {
 		String a = ok.get(i);%>
-	    const okButtonId = "<%=a%>";
+	    const okButtonId = <%=a%>;
 	    const okButton = document.getElementById(okButtonId);
 	    if (okButton) {
 	      okButton.innerHTML = '<img src="path/to/your/image_ok.jpg" alt="버튼 이미지">';
 	    }
-	}
-}
-if(m.get("ok").size()>0){
+	<%}
+}%>
+<%if (m.get("no").size() > 0) {
 	List<String> no = m.get("no");
 	for (int i = 0; i < no.size(); i++) {
 		String a = no.get(i);%>
@@ -74,7 +74,6 @@ if(m.get("ok").size()>0){
 	    if (noButton) {
 		    noButton.innerHTML = '<img src="path/to/your/image_no.jpg" alt="버튼 이미지">';
 		}
-	}
 <%}
 }%>
 </script>
