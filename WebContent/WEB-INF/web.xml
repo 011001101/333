@@ -37,6 +37,17 @@
   	<servlet-name>join</servlet-name>
   	<url-pattern>/join</url-pattern>
   </servlet-mapping>
+ <!-- 
+    <servlet>
+  	<servlet-name>ency</servlet-name>
+  	<servlet-class>encyDao.encyclopediaInfo</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ency</servlet-name>
+  	<url-pattern>/ency</url-pattern>
+  </servlet-mapping>
+  -->
 
   
   
