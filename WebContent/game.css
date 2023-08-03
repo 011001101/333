@@ -1,0 +1,184 @@
+@charset "UTF-8";
+.body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  text-align: center;
+  background: url("img/배경.png") no-repeat;
+  background-size: cover;
+  position: fixed;
+}
+
+.goBack {
+  position: absolute;
+  text-align: center;
+  width: 128px;
+  height: 120px;
+  top: 40px;
+  left: 40px;
+  background-color: #ff0080;
+}
+
+.Lightpot {
+  position: absolute;
+  text-align: center;
+  width: 900px;
+  height: 140px;
+  top: 20%;
+  left: 25%;
+  background: url("img/pot.svg") no-repeat;
+}
+
+.plant {
+  position: absolute;
+  text-align: center;
+  width: 150px;
+  height: 100px;
+  top: 10%;
+  left: 25%;
+  background: url("img/plant.svg") no-repeat;
+}
+
+.Darkpot {
+  position: absolute;
+  text-align: center;
+  width: 900px;
+  height: 140px;
+  bottom: 20%;
+  left: 25%;
+  background: url("img/pot.svg") no-repeat;
+}
+
+.svg-wrapper1 {
+  position: absolute;
+  height: 60px;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  width: 320px;
+  top: 150px;
+  left: 148px;
+  z-index: 1;
+}
+
+.shape1 {
+  position: absolute;
+  top: 125px;
+  left: 148px;
+  fill: transparent;
+  stroke-dasharray: 140 540;
+  stroke-dashoffset: -530;
+  stroke-width: 8px;
+  stroke: #ff0080;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    stroke-width: 8px;
+  }
+  100% {
+    stroke-dasharray: 760;
+    stroke-dashoffset: 0;
+    stroke-width: 2px;
+  }
+}
+.svg-wrapper1:hover .shape1 {
+  animation: 0.5s draw linear forwards;
+}
+
+.shape2 {
+  position: absolute;
+  top: 188px;
+  left: 148px;
+  fill: transparent;
+  stroke-dasharray: 330 1280;
+  stroke-dashoffset: -500;
+  stroke-width: 8px;
+  stroke: #ff0080;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    stroke-width: 8px;
+  }
+  100% {
+    stroke-dasharray: 980;
+    stroke-dashoffset: 0;
+    stroke-width: 2px;
+  }
+}
+.svg-wrapper2:hover .shape2 {
+  animation: 0.5s draw linear forwards;
+}
+
+/* Cursor Styling */
+.cursor::after {
+  content: "";
+  display: inline-block;
+  margin-left: 3px;
+  background-color: black;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+h1.cursor::after {
+  height: 24px;
+  width: 13px;
+}
+
+p.cursor::after {
+  height: 13px;
+  width: 6px;
+}
+
+.output2 {
+  position: absolute;
+  text-align: center;
+  margin-inline: 4px;
+  top: 65px;
+  left: 148px;
+  font-family: "DungGeunMo", monospace;
+  color: rgb(35, 35, 43);
+}
+.output2 h1 {
+  font-size: 30px;
+}
+
+.cursor2::after {
+  content: "";
+  display: inline-block;
+  margin-left: 3px;
+  background-color: black;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+h1.cursor2::after {
+  height: 24px;
+  width: 13px;
+}
+
+p.cursor2::after {
+  height: 13px;
+  width: 6px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=game.css.map */
