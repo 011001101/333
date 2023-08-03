@@ -52,7 +52,7 @@ buttons.forEach((button) => {
     window.location = "/333/inventory.html";
   });
 });
-
+</script>
 <%Map<String, List<String>> m = (Map<String, List<String>>) session.getAttribute("gamein");
 if (m.get("ok").size() > 0) {
    List<String> ok = m.get("ok");
