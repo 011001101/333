@@ -64,6 +64,7 @@ if (m.get("ok").size() > 0) {
 	      okButton.innerHTML = '<img src="path/to/your/image_ok.jpg" alt="버튼 이미지">';
 	    }
 	}
+}
 if(m.get("ok").size()>0){
 	List<String> no = m.get("no");
 	for (int i = 0; i < no.size(); i++) {
