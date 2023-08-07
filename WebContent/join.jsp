@@ -5,21 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>íìê°ì</title>
 </head>
 <body>
-	아이디 : 영대소문자와 숫자를 조합해 2 ~ 4자<br>
-	 비번 : 특수문자 !@#$%^&* 영대소문자와 숫자를 조합해 8 ~ 20자
+	ìì´ë : ìëìë¬¸ìì ì«ìë¥¼ ì¡°í©í´ 2 ~ 4ì<br>
+	 ë¹ë² : í¹ìë¬¸ì !@#$%^&* ìëìë¬¸ìì ì«ìë¥¼ ì¡°í©í´ 8 ~ 20ì
 	<form method="post">
 		<p>
-			<label>아이디 <input type="text" name="id"></label>
+			<label>ìì´ë <input type="text" name="id"></label>
 		</p>
 		<p>
-			<label>비밀번호 <input type="password" name="pw"></label>
+			<label>ë¹ë°ë²í¸ <input type="password" name="pw"></label>
 		</p>
-		<input type=submit value="가입하기">
+		<input type=submit value="ê°ìíê¸°">
 	</form>
-	<a href="insert.jsp">되돌아가기</a>
+	<a href="insert.jsp">ëëìê°ê¸°</a>
 	<c:if test="${ not empty fal }">
 		<p style="color: red">
 		<%= session.getAttribute("fal") %>

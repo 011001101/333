@@ -49,7 +49,7 @@ buttons.forEach((button) => {
     const buttonId = button.id;
 
     sessionStorage.setItem("buttonId", buttonId);
-    window.location = "/333/inventory.html";
+    window.location = "/333/inventory.jsp";
   });
 });
 
@@ -72,7 +72,7 @@ if(m.get("ok").size()>0){
 		const noButtonId = "<%=a%>";
 	    const noButton = document.getElementById(noButtonId);
 	    if (noButton) {
-		    noButton.innerHTML = '<img src="path/to/your/image_no.jpg" alt="버튼 이미지">';
+		    noButton.innerHTML = '<img src="path/to/your/image_no.jpg" alt="버튼 이미지2">';
 		}
 	}
 <%}

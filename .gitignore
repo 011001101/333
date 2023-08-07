@@ -32,5 +32,8 @@ replay_pid*
 /target/
 =======
 /build/
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/011001101/333.git
+=======
 >>>>>>> branch 'master' of https://github.com/011001101/333.git
 /bin/

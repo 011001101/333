@@ -1,64 +1,75 @@
+<%@page import="encyDao.encyGetSet"%>
 <%@page import="java.util.List"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="encyDao.encyclopediaInfo"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<title>도감</title>
+<title>도서관</title>
+도서관
 </head>
 <body>
-	도감
-	<h1>식물 백과사전</h1>
-	<table>
-		<tr>
-			<th>식물 번호</th>
-			<th>식물 이름</th>
-			<th>원산지</th>
-
-		</tr>
-		<c:forEach items="${encyList}" var="plant">
-			<tr>
-				<td>${plant}</td>
-
-			</tr>
-		</c:forEach>
-	</table>
-	<a href="main">되돌아가기</a>
-	<form method="post">
-		<input type="hidden" id="valueInput" name="value" value="0">
-		<button type="button" name="beforeBtn" onclick="decrementValue()">이전</button>
-		<button type="button" name="nextBtn" onclick="incrementValue()">다음</button>
-		<button type="submit" name="submitBtn">전송</button>
+	<form>
+		<button type="submit" name="action" value="prev">이전</button>
+		<button type="submit" name="action" value="next">다음</button>
 	</form>
-	<div id="result">이동할 페이지 No. 0</div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-    function incrementValue() {
-        var valueInput = document.getElementById("valueInput");
-        valueInput.value = parseInt(valueInput.value) + 2;
-        updateResult();
-    }
+	<%
+		encyclopediaInfo ency = new encyclopediaInfo();
 
-    function decrementValue() {
-        var valueInput = document.getElementById("valueInput");
-        valueInput.value = parseInt(valueInput.value) - 2;
-        if (parseInt(valueInput.value) < 0) {
-            alert("이전 페이지가 존재하지 않습니다.");
-            valueInput.value = 0; // 값을 0으로 다시 설정하여 최소값 0을 유지
-        }
-        updateResult();
-    }
+	int paramValue = encyGetSet.getCurrent();
 
-    function updateResult() {
-        var value = document.getElementById("valueInput").value;
-        $("#result").text("이동할 페이지 No. " + value);
-    }
-</script>
+	String action = request.getParameter("action");
+
+	out.println(paramValue);
+	if (action == null) {
+		action = "";
+	}
+
+	// "다음" 버튼을 누르면 2씩 증가, "이전" 버튼을 누르면 2씩 감소
+	if (action.equals("next")) {
+		paramValue = encyGetSet.getCurrent();
+		encyGetSet.setCurrent(paramValue + 2);
+	} else if (action.equals("prev")) {
+		paramValue = encyGetSet.getCurrent();
+		encyGetSet.setCurrent(paramValue - 2);
+	}
+
+	// 최소값을 보정 (0 미만으로 내려가지 않도록)
+	if (encyGetSet.getCurrent() < -1) {
+		encyGetSet.setCurrent(0);
+		// 팝업 창을 띄우는 JavaScript 함수 정의
+		out.println("<script>");
+		out.println("function openPopup() {");
+		out.println("    alert('이전 페이지가 존재하지 않아요!');");
+		out.println("}");
+		out.println("</script>");
+		// "이전" 버튼을 눌렀을 때 openPopup() 함수를 호출하도록 JavaScript 코드 추가
+		out.println("<script>");
+		out.println("openPopup();");
+		out.println("</script>");
+	}
+
+	// 최대값을 제한 (58 이상으로 올라가지 않도록)
+	if (paramValue > 58) {
+		paramValue = 58;
+	}
+
+	out.println(encyGetSet.getCurrent() + "ㅈㅂㅈㅂㅈㅂㅂㅈ");
+	List<String> result = ency.encyclopedia(encyGetSet.getCurrent());
+	%>
+
+	<div id="encyContent">
+		<%=result%>
+	</div>
+
+
 </body>
 </html>

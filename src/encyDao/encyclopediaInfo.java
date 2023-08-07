@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,25 +35,22 @@ public class encyclopediaInfo extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String valueStr = req.getParameter("value");
-        System.out.println("첫번째 밸류 값 " + value);
-        try {
-            value = Integer.parseInt(valueStr);
-            System.out.println("try 밸류 값 " + value);
-        } catch (NumberFormatException e) {
-            // value 값을 숫자로 변환할 수 없을 경우, 기본값인 0을 사용
-        }
-       
-        System.out.println("try 이후 밸류 값 " + value);
-        
-		List<String> result = encyclopedia(value);
-		req.setAttribute("encyList", result);
-		req.getRequestDispatcher("encyclopedia.jsp").forward(req, resp);
-		
-
+//		String valueStr = req.getParameter("value");
+//		System.out.println(valueStr);
+//		value = Integer.parseInt(valueStr);
+//		System.out.println("형변환" + value);
+//		
+//		
+//        
+//		List<String> result = encyclopedia(value);
+//		req.setAttribute("encyList", result);
+//		req.getRequestDispatcher("encyclopedia.jsp").forward(req, resp);
 	}
 
 	public List<String> encyclopedia(int pageNo) {
+		if(pageNo < 0) {
+			pageNo = 0;
+		}
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
