@@ -27,17 +27,19 @@ public class Game extends HttpServlet {
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       HttpSession session = req.getSession();
-       String plant = (String) session.getAttribute("plant");
-       String id = (String) session.getAttribute("userid");
-       if (plant != null && plant.equals("plant")) {
-           String but = (String) req.getParameter("buttonId");
-           System.out.println(but);
-           setplant(id);
-           session.removeAttribute("plant");
-       }
+      String plant = (String) session.getAttribute("plant");
+      String id = (String) session.getAttribute("userid");
+      if (plant != null && plant.equals("plant")) {
+         session.removeAttribute("plant");
+         String but = (String) session.getAttribute("buttonId");
+         int b = Integer.valueOf(but);
+         String plantName = itemplus1(id, b);// 뽑은 식물 이름 가져옴
+         int plantNo = shopNo(plantName);// 상점의 뽑은 식물 번호 가져오기
+         updateInven(id, plantNo);// 인벤토리에 추가
+         setplant(id, b);// 식물 뽑았다고 바꿈
+      }
       session.setAttribute("inven", item(id));
-      System.out.println(id);
-      Map<String, List<String>> map = nowplant(id);
+      Map<String, List<String>> map = nowplant(id);// 현재 심어진 식물
       if (map.size() > 0) {
          session.setAttribute("gamein", map);
       }
@@ -47,15 +49,21 @@ public class Game extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       HttpSession session = req.getSession();
-      String userid = (String) session.getAttribute("userid");// 유저 아이디
-      List<Integer> nolist = itemNo(userid);
-      String inv = (String) req.getParameter("invencl");// 인벤토리 자리
+      String plant = (String) session.getAttribute("plant");
       String but = (String) req.getParameter("buttonId");// (식물 심는곳)몇번째 자리인지
-      int b = Integer.valueOf(inv);
-      if (nolist.size() >= b) {
-         int c = nolist.get(b);
-         int bu = Integer.valueOf(but);
-         newplant(userid, c, but, ck(getplantgr(c), bu));
+      if (plant != null && plant.equals("plant")) {
+         session.setAttribute("buttonId", but);
+      } else {
+         String userid = (String) session.getAttribute("userid");// 유저 아이디
+         List<Integer> nolist = itemNo(userid);
+         String inv = (String) req.getParameter("invencl");// 인벤토리 자리
+         int b = Integer.valueOf(inv);
+         if (nolist.size() >= b) {
+            int c = nolist.get(b);
+            int bu = Integer.valueOf(but);
+            newplant(userid, c, but, ck(getplantgr(c), bu)); // 식물 심음
+            delectIv(userid, c);// 사용한 아이템 삭제
+         }
       }
       resp.sendRedirect("/333/game");
    }
@@ -201,14 +209,34 @@ public class Game extends HttpServlet {
       return list;
    }
 
-   public int setplant(String id) {
+   public int setplant(String id, int set) {
       Connection conn = null;
       PreparedStatement stmt = null;
-      String sql = "UPDATE `playlog` SET `harvesting` = '1' where logId = ? and seat = 1;";
+      String sql = "UPDATE playlog SET harvesting = 1 where logId = ? and seat = ?;";
       try {
          conn = DBUtil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
+         stmt.setInt(1, set);
+         return stmt.executeUpdate();
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         DBUtil.close(stmt);
+         DBUtil.close(conn);
+      }
+      return -1;
+   }
+
+   public int updateInven(String id, int set) {
+      Connection conn = null;
+      PreparedStatement stmt = null;
+      String sql = "INSERT INTO inventory (userId, shopNo) VALUES (?, ?);";
+      try {
+         conn = DBUtil.getConnection();
+         stmt = conn.prepareStatement(sql);
+         stmt.setString(1, id);
+         stmt.setInt(2, set);
          return stmt.executeUpdate();
       } catch (SQLException e) {
          e.printStackTrace();
@@ -284,5 +312,79 @@ public class Game extends HttpServlet {
          break;
       }
       return nut;
+   }
+
+   public String itemplus1(String id, int num) {
+      Connection conn = null;
+      PreparedStatement stmt = null;
+      ResultSet rs = null;
+      String sql = "SELECT plantName FROM playlog as a INNER join plant as b ON a.logNo = b.plantNo where a.logId = ? and a.seat = ? and harvesting = 0;";
+      try {
+         conn = DBUtil.getConnection();
+         stmt = conn.prepareStatement(sql);
+         rs = stmt.executeQuery();
+         stmt.setString(1, id);
+         stmt.setInt(2, num);
+         if (rs.next()) {
+            return rs.getString("plantName");
+         }
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         DBUtil.close(rs);
+         DBUtil.close(stmt);
+         DBUtil.close(conn);
+      }
+      return null;
+   }
+
+   public List<Integer> delectIv(String id, int c) {
+      List<Integer> list = new ArrayList<>();
+      Connection conn = null;
+      PreparedStatement stmt = null;
+      ResultSet rs = null;
+      String sql = "DELETE FROM inventory WHERE userId = ? and shopNo = ?;";
+      try {
+         conn = DBUtil.getConnection();
+         stmt = conn.prepareStatement(sql);
+         stmt.setString(1, id);
+         stmt.setInt(2, c);
+         rs = stmt.executeQuery();
+         while (rs.next()) {
+            int shopNo = rs.getInt("plantNo");
+            list.add(shopNo);
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         DBUtil.close(rs);
+         DBUtil.close(stmt);
+         DBUtil.close(conn);
+      }
+      return list;
+   }
+
+   public int shopNo(String plantname) {
+      Connection conn = null;
+      PreparedStatement stmt = null;
+      ResultSet rs = null;
+      String sql = "SELECT no FROM shop where itemName = ?;";
+      try {
+         conn = DBUtil.getConnection();
+         stmt = conn.prepareStatement(sql);
+         stmt.setString(1, plantname + "(완성)");
+         rs = stmt.executeQuery();
+         if (rs.next()) {
+            return rs.getInt("no");
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         DBUtil.close(rs);
+         DBUtil.close(stmt);
+         DBUtil.close(conn);
+      }
+      return 0;
    }
 }
