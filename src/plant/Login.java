@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import dbutil.DBUtil;
 
+
 public class Login {
 	public boolean loginst(String id, String password) {
 		Connection conn = null;
@@ -22,8 +23,12 @@ public class Login {
 			stmt.setString(2, password);
 
 			rs = stmt.executeQuery();
-			if (rs.next()) {
-				return false;
+			while (rs.next()) {
+				String memberId = rs.getString("userId");
+				String memberPw = rs.getString("userPassword");
+				if(id.equals(memberId) && password.equals(memberPw)) {
+					return true;
+				} 
 			}
 
 		} catch (SQLException e) {
@@ -33,6 +38,6 @@ public class Login {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-		return true;
+		return false;
 	}
 }
