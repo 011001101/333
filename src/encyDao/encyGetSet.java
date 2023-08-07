@@ -13,8 +13,10 @@ public class encyGetSet {
     private String plantLuminous;
     private String plantWatering;
     private String plantPoint;
-    private int current;
-	public encyGetSet(String plantNO, String plantName, String plantOrigin, String plantFamily, String plantGroup,
+    
+    private static int current;
+	
+    public encyGetSet(String plantNO, String plantName, String plantOrigin, String plantFamily, String plantGroup,
 			String plantLuminous, String plantWatering, String plantPoint) {
 		
 		this.plantNO = plantNO;
@@ -29,8 +31,12 @@ public class encyGetSet {
 	public encyGetSet() {
 		
 	}
-	public int getCurrent(int a, int b) {
-		return current = a + b;
+	public static int getCurrent() {
+		
+		return current;
+	}
+	public static void setCurrent(int a) {
+		current = a;
 	}
 	public List<String> getAll(){
 		

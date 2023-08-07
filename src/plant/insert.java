@@ -8,15 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import encyDao.encyGetSet;
-
-@WebServlet("/main")
-public class main extends HttpServlet{
+@WebServlet("/insert")
+public class insert extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		encyGetSet.setCurrent(0);
-		req.getRequestDispatcher("/main.jsp").forward(req, resp);
+		req.getRequestDispatcher("/insert.jsp").forward(req, resp);
 	}
 
 	@Override
