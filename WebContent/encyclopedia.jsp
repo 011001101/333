@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style.css">
+
 <meta charset="UTF-8">
 <title>도감</title>
 </head>
@@ -35,7 +35,7 @@
 		<button type="button" name="nextBtn" onclick="incrementValue()">다음</button>
 		<button type="submit" name="submitBtn">전송</button>
 	</form>
-	<div id="result">결과: 0</div>
+	<div id="result">이동할 페이지 No. 0</div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
@@ -57,7 +57,7 @@
 
     function updateResult() {
         var value = document.getElementById("valueInput").value;
-        $("#result").text("결과: " + value);
+        $("#result").text("이동할 페이지 No. " + value);
     }
 </script>
 </body>
