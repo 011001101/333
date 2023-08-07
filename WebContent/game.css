@@ -1,7 +1,11 @@
 @charset "UTF-8";
-.body {
+.html {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  z-index: inherit;
+}
+
+.body {
   position: relative;
   text-align: center;
   background: url("img/배경.png") no-repeat;
@@ -9,176 +13,258 @@
   position: fixed;
 }
 
-.goBack {
+#contain-all-moon {
+  position: fixed;
+  z-index: 0;
+  display: inline-block;
+  overflow: hidden;
+  background: rgb(36, 36, 36);
+  border-radius: 50%;
+  width: 300px;
+  left: 45%;
+  margin-left: -300px;
+  top: 75%;
+  margin-top: -300px;
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: inset 0 -10px black;
+}
+#contain-all-moon svg {
+  transform-origin: 50% 50%;
+  box-sizing: border-box;
+}
+@keyframes hover {
+  50% {
+    transform: translatey(-1%);
+  }
+}
+#contain-all-moon #moon-group #moon {
+  fill: url(#_rgradient_0);
+  animation: hover 2000ms 500ms ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.05);
+  }
+}
+#contain-all-moon #moon-group #aura-group #aura-1 {
+  transform-origin: 50% 50%;
+  animation: pulse 3000ms 750ms ease-in-out infinite;
+}
+#contain-all-moon #moon-group #aura-group #aura-2 {
+  transform-origin: 50% 50%;
+  animation: pulse 3000ms 1500ms ease-in-out infinite;
+}
+#contain-all-moon #moon-group #aura-group #aura-3 {
+  transform-origin: 50% 50%;
+  animation: pulse 3000ms 2250ms ease-in-out infinite;
+}
+#contain-all-moon #moon-group #crater-group #crater-1 {
+  transform-origin: 50% 50%;
+  animation: hover 2000ms 500ms ease-in-out infinite;
+}
+#contain-all-moon #moon-group #crater-group #crater-2 {
+  transform-origin: 50% 50%;
+  animation: hover 2000ms 500ms ease-in-out infinite;
+}
+#contain-all-moon #moon-group #crater-group #crater-3 {
+  transform-origin: 50% 50%;
+  animation: hover 2000ms 500ms ease-in-out infinite;
+}
+#contain-all-moon #moon-group #crater-group #crater-4 {
+  transform-origin: 50% 50%;
+  animation: hover 2000ms 500ms ease-in-out infinite;
+}
+
+.sun {
+  width: 25rem;
+  height: 25rem;
+  z-index: 0;
+  margin: 0.1rem auto;
   position: absolute;
-  text-align: center;
-  width: 128px;
-  height: 120px;
-  top: 40px;
-  left: 40px;
-  background-color: #ff0080;
+  top: 0.1rem;
+  right: 30rem;
+  background: radial-gradient(transparent 50%, white), radial-gradient(yellow, transparent 70%);
+  -webkit-mask-image: radial-gradient(rgb(0, 0, 0) 40%, transparent 65%);
+  mask-image: radial-gradient(rgb(0, 0, 0) 40%, transparent 65%);
+  border-radius: 50%;
+}
+.sun::after, .sun::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(rgb(0, 0, 0) 40%, transparent 65%);
+  mask-image: radial-gradient(rgb(0, 0, 0) 40%, transparent 65%);
+}
+.sun::before {
+  background: repeating-conic-gradient(from 0deg, yellow 0deg 20deg, transparent 20deg 40deg);
+  animation: rotate 720s linear, scale 1s linear infinite;
+}
+.sun::after {
+  background: radial-gradient(yellow, orange 27%, transparent calc(27% + 3px) 100%), radial-gradient(gold, transparent 70%), repeating-conic-gradient(from 0deg, gold 0deg 5deg, transparent 5deg 10deg);
+  transform: rotate(15deg);
+  animation: rotate 36s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.Light {
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  width: 100vw;
+  height: 50vh;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  top: 0%;
+}
+
+.Dark {
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  width: 100vw;
+  height: 50vh;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  top: 50%;
 }
 
 .Lightpot {
-  position: absolute;
+  position: fixed;
   text-align: center;
-  width: 900px;
-  height: 140px;
-  top: 20%;
-  left: 25%;
-  background: url("img/pot.svg") no-repeat;
+  width: 75vw;
+  height: 20vh;
+  top: 25%;
+  left: 20%;
+  z-index: 1;
+  background: url("img/shelves.svg") no-repeat;
+}
+.Lightpot :hover {
+  transform: scale(2, 1.5);
 }
 
 .plant {
-  position: absolute;
+  position: relative;
   text-align: center;
-  width: 150px;
-  height: 100px;
-  top: 10%;
-  left: 25%;
+  width: 4vw;
+  height: 8vh;
+  margin-left: 0.6rem;
+  bottom: 3rem;
   background: url("img/plant.svg") no-repeat;
-}
-
-.Darkpot {
-  position: absolute;
-  text-align: center;
-  width: 900px;
-  height: 140px;
-  bottom: 20%;
-  left: 25%;
-  background: url("img/pot.svg") no-repeat;
-}
-
-.svg-wrapper1 {
-  position: absolute;
-  height: 60px;
-  margin: 0 auto;
-  transform: translateY(-50%);
-  width: 320px;
-  top: 150px;
-  left: 148px;
   z-index: 1;
 }
 
-.shape1 {
-  position: absolute;
-  top: 125px;
-  left: 148px;
-  fill: transparent;
-  stroke-dasharray: 140 540;
-  stroke-dashoffset: -530;
-  stroke-width: 8px;
-  stroke: #ff0080;
-}
-
-@keyframes draw {
-  0% {
-    stroke-dasharray: 140 540;
-    stroke-dashoffset: -474;
-    stroke-width: 8px;
-  }
-  100% {
-    stroke-dasharray: 760;
-    stroke-dashoffset: 0;
-    stroke-width: 2px;
-  }
-}
-.svg-wrapper1:hover .shape1 {
-  animation: 0.5s draw linear forwards;
-}
-
-.shape2 {
-  position: absolute;
-  top: 188px;
-  left: 148px;
-  fill: transparent;
-  stroke-dasharray: 330 1280;
-  stroke-dashoffset: -500;
-  stroke-width: 8px;
-  stroke: #ff0080;
-}
-
-@keyframes draw {
-  0% {
-    stroke-dasharray: 140 540;
-    stroke-dashoffset: -474;
-    stroke-width: 8px;
-  }
-  100% {
-    stroke-dasharray: 980;
-    stroke-dashoffset: 0;
-    stroke-width: 2px;
-  }
-}
-.svg-wrapper2:hover .shape2 {
-  animation: 0.5s draw linear forwards;
-}
-
-/* Cursor Styling */
-.cursor::after {
-  content: "";
-  display: inline-block;
-  margin-left: 3px;
-  background-color: black;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-}
-
-h1.cursor::after {
-  height: 24px;
-  width: 13px;
-}
-
-p.cursor::after {
-  height: 13px;
-  width: 6px;
-}
-
-.output2 {
-  position: absolute;
+.plantpot {
+  margin-left: 1em;
+  float: right;
+  position: relative;
   text-align: center;
-  margin-inline: 4px;
-  top: 65px;
-  left: 148px;
-  font-family: "DungGeunMo", monospace;
-  color: rgb(35, 35, 43);
-}
-.output2 h1 {
-  font-size: 30px;
+  width: 5vw;
+  height: 9.5vh;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  background: url("img/pot.svg") no-repeat;
 }
 
-.cursor2::after {
-  content: "";
-  display: inline-block;
-  margin-left: 3px;
-  background-color: black;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
+.Darkpot {
+  position: fixed;
+  text-align: center;
+  width: 72vw;
+  height: 20vh;
+  bottom: 10%;
+  left: 25%;
+  z-index: 1;
+  background: url("img/shelves.svg") no-repeat;
+}
+.Darkpot :hover {
+  transform: scale(2, 1.5);
 }
 
-h1.cursor2::after {
-  height: 24px;
-  width: 13px;
+.goBack {
+  position: sticky;
+  width: 10rem;
+  height: 10rem;
+  bottom: 95rem;
+  left: 0%;
+  background-color: rgb(255, 82, 82);
+  z-index: 3;
 }
 
-p.cursor2::after {
-  height: 13px;
-  width: 6px;
+.Whatis {
+  position: sticky;
+  width: 25rem;
+  height: 40rem;
+  left: 40px;
+  background-color: aqua;
+  z-index: 3;
 }
 
-@keyframes blink {
-  0% {
-    opacity: 1;
+.Status {
+  position: sticky;
+  width: 25rem;
+  height: 20rem;
+  left: 40px;
+  background-color: seagreen;
+  z-index: 3;
+}
+
+.star {
+  position: relative;
+  top: -120px;
+  margin-top: -10%;
+  margin-left: 5%;
+}
+.star svg {
+  width: 100vw;
+  height: 60vh;
+  margin-top: 10%;
+}
+.star #Path-4, .star #Path-2, .star #Path-3 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s linear infinite;
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
   }
-  49% {
-    opacity: 1;
+  to {
+    stroke-dashoffset: 0;
   }
-  50% {
-    opacity: 0;
-  }
+}
+@keyframes gleam {
   100% {
-    opacity: 0;
+    fill: #D69E00;
+    opacity: 0.8;
   }
 }/*# sourceMappingURL=game.css.map */
