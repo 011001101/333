@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dbutil.DBUtil;
+import DButil.dbutil;
 
 
 public class Login {
@@ -16,7 +16,7 @@ public class Login {
 		String sql = "select * from user where userId = ? and userPassword = ?";
 
 		try {
-			conn = DBUtil.getConnection();
+			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, id);
@@ -34,9 +34,9 @@ public class Login {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(rs);
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
+			dbutil.close(rs);
+			dbutil.close(stmt);
+			dbutil.close(conn);
 		}
 		return false;
 	}

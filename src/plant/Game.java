@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dbutil.DBUtil;
+import DButil.dbutil;
 
 @WebServlet("/game")
 public class Game extends HttpServlet {
@@ -79,7 +79,7 @@ public class Game extends HttpServlet {
       String sql = "select seat, herbtime from playlog where logId = ? and harvesting = 0";
 
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
          rs = stmt.executeQuery();
@@ -97,9 +97,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return map;
    }
@@ -112,7 +112,7 @@ public class Game extends HttpServlet {
       String sql = "INSERT INTO playlog (localdate, logId, logNo, seat, herbtime) VALUES (?, ?, ?, ?, ?);";
 
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setObject(1, date);
          stmt.setString(2, id);
@@ -124,8 +124,8 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return -1;
    }
@@ -138,7 +138,7 @@ public class Game extends HttpServlet {
       String sql = "SELECT plantImage\r\n" + "FROM inventory AS a\r\n"
             + "INNER JOIN plant AS b ON a.no = b.plantNo\r\n" + "WHERE a.userId = ? AND plantGroup LIKE '%씨앗주머니%';";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
          rs = stmt.executeQuery();
@@ -149,9 +149,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return list;
    }
@@ -163,7 +163,7 @@ public class Game extends HttpServlet {
       ResultSet rs = null;
       String sql = "SELECT plantNo FROM inventory as a INNER JOIN plant AS b ON a.no = b.plantNo WHERE a.userId = ? AND plantGroup LIKE '%씨앗주머니%';";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
          rs = stmt.executeQuery();
@@ -174,9 +174,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return list;
    }
@@ -188,7 +188,7 @@ public class Game extends HttpServlet {
       ResultSet rs = null;
       String sql = "SELECT plantGroup, plantLuminous FROM plant where plantNo = ?;";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setInt(1, no);
          rs = stmt.executeQuery();
@@ -202,9 +202,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return list;
    }
@@ -214,7 +214,7 @@ public class Game extends HttpServlet {
       PreparedStatement stmt = null;
       String sql = "UPDATE playlog SET harvesting = 1 where logId = ? and seat = ?;";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
          stmt.setInt(1, set);
@@ -222,8 +222,8 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return -1;
    }
@@ -233,7 +233,7 @@ public class Game extends HttpServlet {
       PreparedStatement stmt = null;
       String sql = "INSERT INTO inventory (userId, shopNo) VALUES (?, ?);";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
          stmt.setInt(2, set);
@@ -241,8 +241,8 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return -1;
    }
@@ -320,7 +320,7 @@ public class Game extends HttpServlet {
       ResultSet rs = null;
       String sql = "SELECT plantName FROM playlog as a INNER join plant as b ON a.logNo = b.plantNo where a.logId = ? and a.seat = ? and harvesting = 0;";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          rs = stmt.executeQuery();
          stmt.setString(1, id);
@@ -332,9 +332,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return null;
    }
@@ -346,7 +346,7 @@ public class Game extends HttpServlet {
       ResultSet rs = null;
       String sql = "DELETE FROM inventory WHERE userId = ? and shopNo = ?;";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, id);
          stmt.setInt(2, c);
@@ -358,9 +358,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return list;
    }
@@ -371,7 +371,7 @@ public class Game extends HttpServlet {
       ResultSet rs = null;
       String sql = "SELECT no FROM shop where itemName = ?;";
       try {
-         conn = DBUtil.getConnection();
+         conn = dbutil.getConnection();
          stmt = conn.prepareStatement(sql);
          stmt.setString(1, plantname + "(완성)");
          rs = stmt.executeQuery();
@@ -381,9 +381,9 @@ public class Game extends HttpServlet {
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
-         DBUtil.close(rs);
-         DBUtil.close(stmt);
-         DBUtil.close(conn);
+    	  dbutil.close(rs);
+    	  dbutil.close(stmt);
+    	  dbutil.close(conn);
       }
       return 0;
    }
