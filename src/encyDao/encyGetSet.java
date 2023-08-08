@@ -1,4 +1,4 @@
-package src.encyDao;
+package encyDao;
 
 import java.util.ArrayList;
 import java.util.Arrays;

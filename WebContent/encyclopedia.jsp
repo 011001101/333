@@ -1,6 +1,6 @@
-<%@page import="src.encyDao.encyGetSet"%>
+<%@page import="encyDao.encyGetSet"%>
 <%@page import="java.util.List"%>
-<%@page import="src.encyDao.encyclopediaInfo"%>
+<%@page import="encyDao.encyclopediaInfo"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>

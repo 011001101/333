@@ -1,4 +1,4 @@
-package src.plant;
+package plant;
 
 import java.io.IOException;
 import java.sql.Blob;

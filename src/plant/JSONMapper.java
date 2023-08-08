@@ -1,4 +1,4 @@
-package src.plant;
+package plant;
 
 import java.io.File;
 import java.io.IOException;

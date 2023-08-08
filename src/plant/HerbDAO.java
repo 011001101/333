@@ -1,4 +1,4 @@
-package src.plant;
+package plant;
 
 import java.sql.Connection;
 import java.sql.Date;

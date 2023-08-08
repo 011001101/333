@@ -1,4 +1,4 @@
-package src.DButil;
+package DButil;
 
 import java.io.IOException;
 import java.sql.Connection;

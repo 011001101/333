@@ -1,4 +1,4 @@
-package src.plant;
+package plant;
 
 public class Herb {
 	
