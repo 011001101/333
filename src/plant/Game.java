@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DButil.dbutil;
 
 @WebServlet("/game")
 public class Game extends HttpServlet {
@@ -84,7 +85,7 @@ public class Game extends HttpServlet {
 		String sql = "select seat, herbtime from playlog where logId = ? and harvesting = 0";
 
 		try {
-			conn = DButil.getConnection();
+			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
