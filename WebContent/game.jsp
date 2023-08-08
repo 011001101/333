@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+   pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,7 +145,7 @@
                         <path d="M51.333 200c0-82.051 66.616-148.667 148.667-148.667S348.667 117.949 348.667 200 282.051 348.667 200 348.667 51.333 282.051 51.333 200z" id="aura-3" />
                     </g>
     
-                <!-- 	moon		 -->
+                <!--    moon       -->
                     <radialGradient id="_rgradient_0" fx=".5" fy=".5" cx=".5" cy=".5" r=".5" gradientTransform="translate(107.867 107.867) scale(184.265)" gradientUnits="userSpaceOnUse">
                         <stop offset="88.69218161%" stop-color="#ffe" />
                         <stop offset="100%" stop-color="#fff" />
@@ -227,43 +227,4 @@
 
 <script src="script.js"></script>
 </body>
-
-<script>
-const buttons = document.querySelectorAll("button");
-
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const buttonId = button.id;
-
-    sessionStorage.setItem("buttonId", buttonId);
-    window.location = "/333/inventory.jsp";
-  });
-});
-
-<%Map<String, List<String>> m = (Map<String, List<String>>) session.getAttribute("gamein");
-if (m.get("ok").size() > 0) {
-	List<String> ok = m.get("ok");
-	for (int i = 0; i < ok.size(); i++) {
-		String a = ok.get(i);%>
-	    const okButtonId = "<%=a%>";
-	    const okButton = document.getElementById(okButtonId);
-	    if (okButton) {
-	      okButton.innerHTML = '<img src="path/to/your/image_ok.jpg" alt="버튼 이미지">';
-	    }
-	}
-}
-if(m.get("ok").size()>0){
-	List<String> no = m.get("no");
-	for (int i = 0; i < no.size(); i++) {
-		String a = no.get(i);%>
-		const noButtonId = "<%=a%>";
-	    const noButton = document.getElementById(noButtonId);
-	    if (noButton) {
-		    noButton.innerHTML = '<img src="path/to/your/image_no.jpg" alt="버튼 이미지2">';
-		}
-	}
-<%}
-}%>
-</script>
-
 </html>

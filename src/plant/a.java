@@ -1,4 +1,4 @@
-package plant;
+package src.plant;
 
 public class a {
 	public static void main(String[] args) {
