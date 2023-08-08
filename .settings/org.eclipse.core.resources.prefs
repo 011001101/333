@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/game.jsp=UTF-8
+encoding//WebContent/inventory.jsp=UTF-8
+encoding//WebContent/login.jsp=UTF-8
 encoding//WebContent/main.jsp=UTF-8

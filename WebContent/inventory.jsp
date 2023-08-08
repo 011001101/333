@@ -1,8 +1,3 @@
-<%@page import="java.sql.Blob"%>
-<%@page import="java.util.List"%>
-<%@page import="plant.Game"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,5 +36,9 @@
 			</div>
 		</div>
 	</menu>
+
+
+
+	<script src="script.js"/>
 </body>
 </html>

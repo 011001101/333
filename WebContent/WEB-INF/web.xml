@@ -18,12 +18,12 @@
   
 
   <servlet>
-  	<servlet-name>joing</servlet-name>
+  	<servlet-name>join</servlet-name>
   	<servlet-class>join.Joininfo</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>joing</servlet-name>
+  	<servlet-name>join</servlet-name>
   	<url-pattern>/join</url-pattern>
   </servlet-mapping>
 
@@ -36,7 +36,6 @@
   	<servlet-name>ency</servlet-name>
   	<url-pattern>/ency</url-pattern>
   </servlet-mapping>
-
 
   
   

@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import encyDao.encyGetSet;
+
 @WebServlet("/main")
 public class main extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		encyGetSet.setCurrent(0);
 		req.getRequestDispatcher("/main.jsp").forward(req, resp);
 	}
 

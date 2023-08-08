@@ -27,41 +27,47 @@ public class Game extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		String plant = (String) session.getAttribute("plant");
 		String id = (String) session.getAttribute("userid");
-		if (plant != null && plant.equals("plant")) {
-			session.removeAttribute("plant");
-			String but = (String) session.getAttribute("buttonId");
-			int b = Integer.valueOf(but);
-			String plantName = itemplus1(id, b);// 뽑은 식물 이름 가져옴
-			int plantNo = shopNo(plantName);// 상점의 뽑은 식물 번호 가져오기
-			updateInven(id, plantNo);// 인벤토리에 추가
-			setplant(id, b);// 식물 뽑았다고 바꿈
-		}
+		System.out.println(id);
 		session.setAttribute("inven", item(id));
 		Map<String, List<String>> map = nowplant(id);// 현재 심어진 식물
-		if (map.size() > 0) {
-			session.setAttribute("gamein", map);
-		}
+		session.setAttribute("gamein", map);
+		System.out.println(map.toString());
 		req.getRequestDispatcher("/game.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		String plant = (String) session.getAttribute("plant");
+		String plant = (String) req.getParameter("plant");
 		String but = (String) req.getParameter("buttonId");// (식물 심는곳)몇번째 자리인지
 		if (plant != null && plant.equals("plant")) {
-			session.setAttribute("buttonId", but);
+			req.removeAttribute("plant");
+			String plant2 = (String) req.getParameter("plant");
+			System.out.println(plant2);
+			if (but != null) {
+				String id = (String) session.getAttribute("userid");
+				System.out.println(but);
+				String plantName = itemplus1(id, but);// 뽑은 식물 이름 가져옴
+				System.out.println(plantName);
+				int plantNo = shopNo(plantName);// 상점의 뽑은 식물 번호 가져오기
+				System.out.println(plantNo);
+				updateInven(id, plantNo);// 인벤토리에 추가
+				setplant(id, but);// 식물 뽑았다고 바꿈
+			}
 		} else {
+			System.out.println("작동 3");
 			String userid = (String) session.getAttribute("userid");// 유저 아이디
+			System.out.println(userid);
 			List<Integer> nolist = itemNo(userid);
+			System.out.println(nolist.toString());
 			String inv = (String) req.getParameter("invencl");// 인벤토리 자리
+			System.out.println(inv);
 			int b = Integer.valueOf(inv);
-			if (nolist.size() >= b) {
+			System.out.println(b);
+			if (nolist.size() != 0 && nolist.size() >= b) {
 				int c = nolist.get(b);
-				int bu = Integer.valueOf(but);
-				newplant(userid, c, but, ck(getplantgr(c), bu)); // 식물 심음
+				newplant(userid, c, but, ck(getplantgr(c), but)); // 식물 심음
 				delectIv(userid, c);// 사용한 아이템 삭제
 			}
 		}
@@ -208,7 +214,7 @@ public class Game extends HttpServlet {
 		return list;
 	}
 
-	public int setplant(String id, int set) {
+	public int setplant(String id, String set) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String sql = "UPDATE playlog SET harvesting = 1 where logId = ? and seat = ?;";
@@ -216,7 +222,7 @@ public class Game extends HttpServlet {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
-			stmt.setInt(1, set);
+			stmt.setString(2, set);
 			return stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -246,10 +252,12 @@ public class Game extends HttpServlet {
 		return -1;
 	}
 
-	private int ck(List<String> a, int num) {
+	private int ck(List<String> a, String num) {
 		String fun = "음지";
 		int nut = 0;
-		if (num < 12) {
+		String nt = num.substring(5);
+		int nst = Integer.valueOf(nt);
+		if (nst < 13) {
 			fun = "양지";
 		}
 		switch (a.get(0)) {
@@ -313,21 +321,21 @@ public class Game extends HttpServlet {
 		return nut;
 	}
 
-	public String itemplus1(String id, int num) {
+	public String itemplus1(String id, String set) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		String plantName = null;
 		String sql = "SELECT plantName FROM playlog as a INNER join plant as b ON a.logNo = b.plantNo where a.logId = ? and a.seat = ? and harvesting = 0;";
 		try {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
 			stmt.setString(1, id);
-			stmt.setInt(2, num);
+			stmt.setString(2, set);
+			rs = stmt.executeQuery();
 			if (rs.next()) {
-				return rs.getString("plantName");
+				plantName = rs.getString("plantName");
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -335,11 +343,10 @@ public class Game extends HttpServlet {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-		return null;
+		return plantName;
 	}
 
-	public List<Integer> delectIv(String id, int c) {
-		List<Integer> list = new ArrayList<>();
+	public int delectIv(String id, int c) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -349,11 +356,8 @@ public class Game extends HttpServlet {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			stmt.setInt(2, c);
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				int shopNo = rs.getInt("plantNo");
-				list.add(shopNo);
-			}
+			return stmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -361,7 +365,7 @@ public class Game extends HttpServlet {
 			DBUtil.close(stmt);
 			DBUtil.close(conn);
 		}
-		return list;
+		return -1;
 	}
 
 	public int shopNo(String plantname) {

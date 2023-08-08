@@ -3,9 +3,10 @@
  }
 
  function encygo() {
-    window.location.href = "test.jsp";
+    window.location.href = "/333/ency";
  }
 
  function gamego() {
     window.location.href = "game";
  }
+

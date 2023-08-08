@@ -1,10 +1,8 @@
-<%@page import="java.util.Timer"%>
-<%@page import="java.sql.Time"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +24,6 @@
 	href='//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'
 	rel='stylesheet' type='text/css'>
 
-<script src='game.js'></script>
 </head>
 
 
@@ -55,77 +52,52 @@
 	<div class="Light">
 
 		<div class="sun"></div>
-
 		<div class="Lightpot" name="pot">
-			<div class="plantpot" name="plant1" type="button"
-				onclick="alert('기다려!')">
-				<div class="plant" name="green1" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant1" type="button">
+				<div class="plant" name="green1" type="button "></div>
 			</div>
-			<div class="plantpot" name="plant2" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green2" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant2" type="button ">
+				<div class="plant" name="green2" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant3" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green3" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant3" type="button ">
+				<div class="plant" name="green3" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant4" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green4" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant4" type="button ">
+				<div class="plant" name="green4" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant5" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green5" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant5" type="button ">
+				<div class="plant" name="green5" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant6" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green6" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant6" type="button ">
+				<div class="plant" name="green6" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant7" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green7" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant7" type="button ">
+				<div class="plant" name="green7" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant8" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green8" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant8" type="button ">
+				<div class="plant" name="green8" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant9" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green9" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant9" type="button ">
+				<div class="plant" name="green9" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant10" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green10" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant10" type="button ">
+				<div class="plant" name="green10" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant11" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green11" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant11" type="button ">
+				<div class="plant" name="green11" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant12" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green12" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant12" type="button ">
+				<div class="plant" name="green12" type="button "></div>
 			</div>
 
 
@@ -278,78 +250,53 @@
 
 
 
-
-			<div class="plantpot" name="plant13" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green13" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant13" type="button ">
+				<div class="plant" name="green13" type="button "></div>
 			</div>
 
 
-			<div class="plantpot" name="plant14" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green14" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant14" type="button ">
+				<div class="plant" name="green14" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant15" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green15" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant15" type="button ">
+				<div class="plant" name="green15" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant16" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green16" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant16" type="button ">
+				<div class="plant" name="green16" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant17" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green17" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant17" type="button ">
+				<div class="plant" name="green17" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant18" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green18" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant18" type="button ">
+				<div class="plant" name="green18" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant19" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green19" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant19" type="button ">
+				<div class="plant" name="green19" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant20" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green20" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant20" type="button ">
+				<div class="plant" name="green20" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant21" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green21" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant21" type="button ">
+				<div class="plant" name="green21" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant22" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green22" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant22" type="button ">
+				<div class="plant" name="green22" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant23" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green23" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant23" type="button ">
+				<div class="plant" name="green23" type="button "></div>
 			</div>
 
-			<div class="plantpot" name="plant24" type="button "
-				onclick="alert('기다려!')">
-				<div class="plant" name="green24" type="button "
-					onclick="alert('풀떼기!')"></div>
+			<div class="plantpot" name="plant24" type="button ">
+				<div class="plant" name="green24" type="button "></div>
 			</div>
 
 
@@ -374,4 +321,167 @@
 
 	<script src="script.js"></script>
 </body>
+<script>
+//1단계, 2단계일때는 마우스 상호작용 불가능하게 만들고, 3단계(다 컸음)일때만 상호작용 되도록
+
+//흙일 때 클릭 후, 인벤토리 꺼내서 씨앗 심기
+//심으면 불룩 나온 흙 (0단계)
+
+//1단계 (새싹)
+//2단계 (줄기 나옴)
+
+//3단게 수확 
+//뽑으면서 동시에 뽑는 애니메이션 넣고, 인벤토리에 값 반환(+1)
+for(var i = 1; i <= 27; i++) {
+ var duration = 1 + Math.random() * 3;
+ $("#star" + i).css({
+   "animation" : duration + "s gleam infinite ease"
+ })
+}
+//이건 별 그리는 함수임 
+
+function seed(o){
+
+
+ function openInven(){
+
+ };
+
+ openInven();
+ //인벤토리 불러오기
+
+ //씨앗 선택하기
+
+ //씨앗 정보 json으로 뭉쳐서 db로 보내주기
+
+
+ //이미지 바꾸기
+
+ $('.plant').replaceWith('<img src="불룩한 흙" />');
+}
+
+function harvest(o){
+ $(o).animate( { top:'-=200', opacity:0 }, 200, function(){
+     $(this).remove(); // 애니메이션이 끝나면 제거
+ });
+}
+
+var okButtonId = null;
+<%Map<String, List<String>> m = (Map<String, List<String>>) session.getAttribute("gamein");
+if (m.get("ok") != null) {
+	List<String> ok = m.get("ok");
+	System.out.println(ok.toString());
+	for (int i = 0; i < ok.size(); i++) {
+		String a = ok.get(i);%>
+	okButtonId = "<%=a%>";
+sessionStorage.setItem("ok<%=i%>", okButtonId);
+sessionStorage.setItem("setok", <%=i%>);
+console.log(okButtonId);
+<%a = null;
+}
+}
+if (m.get("no") != null) {
+List<String> no = m.get("no");
+System.out.println(no.toString());
+for (int i = 0; i < no.size(); i++) {
+String a = no.get(i);%>
+okButtonId = "<%=a%>";
+sessionStorage.setItem("no<%=i%>", okButtonId);
+sessionStorage.setItem("setno", <%=i%>);
+console.log(okButtonId);
+<%a = null;
+}
+}
+m = null;%>
+console.log(okButtonId);
+	var set = sessionStorage.getItem("setok");
+	console.log(set);
+	var ok = null;
+	if(set != 0){
+	for (var i = 0; i <= set; i++) {
+	    ok = sessionStorage.getItem("ok" + i);
+	    console.log(ok);
+	    // 클래스 이름이 ok의 값과 일치하는 요소를 선택
+	    var elements = document.querySelectorAll(".plant");
+	    for (var j = 0; j < elements.length; j++) {
+	        if (elements[j].getAttribute("name") === ok) {
+	        	console.log("여기");
+	            elements[j].style.backgroundImage = "url('img/plant.svg')";
+	        }
+	    }
+	}
+	}
+	var setno = sessionStorage.getItem("setno");
+	var no = null;
+
+	for (var i = 0; i <= setno; i++) {
+	    no = sessionStorage.getItem("no" + i);
+
+	    // 클래스 이름이 ok의 값과 일치하는 요소를 선택
+	    var elementsno = document.querySelectorAll(".plant");
+	    for (var j = 0; j < elements.length; j++) {
+	        if (elementsno[j].getAttribute("name") === no) {
+	            elementsno[j].style.backgroundImage = "url('img/춘식2.png')";
+	        }
+	    }
+	}
+	setno = 0;
+	const plantpots = document.querySelectorAll('.plant');
+	plantpots.forEach((plantpot) => {
+	    plantpot.addEventListener('click', () => {
+	    	var buttonId = plantpot.getAttribute('name');
+	        sessionStorage.setItem("buttonId", buttonId);
+	        
+	        const computedStyle = window.getComputedStyle(plantpot);
+	        const backgroundImage = computedStyle.getPropertyValue('background-image');
+	        const urlRegex = /url\("(.+)"\)/;
+	        const matches = backgroundImage.match(urlRegex);
+	        
+	        if (matches && matches.length > 1) {
+	            const imageUrl = decodeURIComponent(matches[1]); // URL 디코딩
+		            if (imageUrl.includes('img/춘식2.png')) {
+		    	    	alert('기다려!');
+		    	    	window.location.href = "/333/game";
+		    	    } else if (imageUrl.includes('img/plant.svg')) {
+		    			// 수확 가능 db에서 수확 했다고 바꾸기
+		    			sessionStorage.setItem("plant", "plant");
+		    	        const xhr = new XMLHttpRequest();
+		    	   		xhr.open("POST", "/333/game", true);
+		    	   		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		    	   		xhr.onreadystatechange = function() {
+		    	      	if (xhr.readyState === 4 && xhr.status === 200) {
+	//	    	        	console.log(xhr.responseText);
+		    	        	window.location.href = "/333/game";
+		    	      		}
+		    	    	};
+		    	    	xhr.send("buttonId=" + encodeURIComponent(buttonId)+"&plant=" + "plant");
+		    	    } 
+	            }
+	    });
+	});
+
+$(function() {
+
+    var w = $(window).width(),
+      h = $(window).height();
+    //$('section').width(w);
+    $('section').height(h);
+    $('menu .container').height(h - 60);
+    $('body').prepend('<div id="overlay">');
+  
+    $('.plant').click(function() {
+    	  $(this).css('background-image', 'url("img/춘식1.png")');
+    	  $('html').addClass('active');
+    	});
+    $('#close-menu').click(function() {$('html').removeClass('active');});
+    $('#overlay').click(function() {$('html').removeClass('active');});
+    $(window).resize(function() {
+      var w = $(window).width(),
+        h = $(window).height();
+      //$('section').width(w);
+      $('section').height(h);
+      $('menu .container').height(h - 60);
+    });
+});
+</script>
 </html>

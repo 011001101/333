@@ -36,12 +36,29 @@ function toggleItem(event) {
     const row = parseInt(event.target.getAttribute("data-row"));
     const col = parseInt(event.target.getAttribute("data-col"));
 
+	const buttonId = sessionStorage.getItem("buttonId");
+	sessionStorage.setItem("buttonId", buttonId);
     if (inventory[row][col]) {
         inventory[row][col] = null;
     } else {
         // 여기에서 아이템 정보를 입력하면 됩니다.
         // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-        inventory[row][col] = "아이템"+[row]+[col];
+		console.log("작동1");
+		if(buttonId != null){
+		   	const r = (row*9)+col;
+		   	sessionStorage.setItem("invencl", r);
+			console.log(r);
+			const xhr = new XMLHttpRequest();
+		   	xhr.open("POST", "/333/game", true);
+		  	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	  		xhr.onreadystatechange = function() {
+		     if (xhr.readyState === 4 && xhr.status === 200) {
+		       	console.log(xhr.responseText);
+		      	window.location.href = "/333/game";
+		      }
+		   };
+		   xhr.send("buttonId=" + encodeURIComponent(buttonId)+"&invencl=" + r);
+		}
     }
 
     drawInventory();
