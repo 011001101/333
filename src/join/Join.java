@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.annotation.WebServlet;
+
 import dbutil.DBUtil;
 
+@WebServlet("/join")
 public class Join {
 	public boolean joinst(String id, String password) {
 		Connection conn = null;
