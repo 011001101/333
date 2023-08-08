@@ -1,4 +1,3 @@
-<%@page import="shop.shopData"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,10 +9,5 @@
 <body>
 상점
 <a href="main">되돌아가기</a>
-<%
-	shopData shop = new shopData();
-	out.println(shop.getItem(1));
-	out.println(shop.getItem(2));
-%>
 </body>
 </html>

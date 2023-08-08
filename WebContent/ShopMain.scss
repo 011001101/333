@@ -1,0 +1,271 @@
+@font-face {
+  font-family: 'Cafe24Dangdanghae';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*div {
+  background-color: #716f81;
+  color: white;
+  font-weight: bold;
+  padding: 30px;
+  text-align: center;
+}
+
+div::before {
+  content: "800px 이상일 때";
+}
+
+@media (min-width: 800px) {
+}
+
+@media (max-width: 799px) and (min-width: 569px) {
+  div {
+    background-color: #b97a95;
+    height: 100px;
+  }
+  div::before {
+    content: "799px 이하 569px 이상";
+  }
+}
+
+@media (max-width: 468px) and (min-width: 381px) {
+  div {
+    background-color: #f6ae99;
+    height: 200px;
+  }
+  div::before {
+    content: "468px 이하 381px 이상";
+  }
+}
+
+@media (max-width: 380px) {
+  div {
+    background-color: #f2e1c1;
+    color: #716f81;
+    height: 300px;
+  }
+  div::before {
+    content: "380px 이하";
+  }
+}*/
+.html{
+
+  overflow: hidden;
+  display: block;
+
+}
+.body {
+  font-family: 'Cafe24Dangdanghae';
+  position: relative;
+  text-align: center;
+ 
+  position: fixed;
+}
+
+.Status {
+  position: absolute;
+  text-align: center;
+ width: 20rem;
+ height: 15rem;
+ background-color: white;
+ top:15%;
+left:1%;
+
+}
+
+
+
+.goBack {
+  position: absolute;
+  text-align: center;
+  width: 64px;
+  height: 64px;
+  top: 40px;
+  left: 40px;
+  cursor: pointer;
+  background-image: url(img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.rabbit {
+//배경
+  position: relative;
+  text-align: center;
+  align-self: center;
+  background: url("img/shopInside.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  margin-inline: 4px;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+.rabbitFace{
+
+  background: url("img/rabbit.svg") no-repeat;
+  background-size: cover;
+  width: 600px;
+  height: 600px;
+  margin-inline: 4px;
+z-index: 1;
+position: absolute;
+top: 25%;
+left: 38%;
+
+&:hover{
+-webkit-animation: ring 2s .7s ease-in-out infinite;
+-webkit-transform-origin: 50% 4px;
+-moz-animation: ring 2s .7s ease-in-out infinite;
+-moz-transform-origin: 50% 4px;
+animation: ring 2s .7s ease-in-out infinite;
+transform-origin: 50% 4px;
+}
+
+@keyframes ring {
+0% { -webkit-transform: rotateZ(0); }
+1% { -webkit-transform: rotateZ(10deg); }
+10% { -webkit-transform: rotateZ(-8deg); }
+19% { -webkit-transform: rotateZ(8deg); }
+28% { -webkit-transform: rotateZ(-6deg); }
+37% { -webkit-transform: rotateZ(6deg); }
+46% { -webkit-transform: rotateZ(-4deg); }
+55% { -webkit-transform: rotateZ(4deg); }
+64% { -webkit-transform: rotateZ(-2deg); }
+73% { -webkit-transform: rotateZ(1deg); }
+82% { -webkit-transform: rotateZ(-1deg); }
+100% { -webkit-transform: rotateZ(0);
+  background: url("img/rabbit5.svg") no-repeat;
+  background-size: cover;
+}
+}
+}
+
+
+
+.BUY {
+  //상점 이동 버튼
+  position: absolute;
+  text-align: center;
+  background: url("img/selectBox.svg") no-repeat;
+  background-size: cover;
+  width: 360px;
+  height: 280px;
+  margin-inline: 4px;
+  top: 300px;
+  left: 90vw;
+  
+  transform: translate(-70%, -95%);
+  cursor: pointer;
+
+}
+
+
+.text{
+position: absolute;
+top: 55%;
+font-family: 'Cafe24Dangdanghae';
+font-size: 35pt;
+text-align: center;
+margin-left: 28%;
+cursor: pointer;
+
+
+}
+
+.SELL {
+  //판매하기
+  position: absolute;
+  text-align: center;
+  background: url("img/selectBox.svg") no-repeat;
+  background-size: cover;
+  width: 360px;
+  height: 280px;
+  margin-inline: 4px;
+  top: 580px;
+  left: 90vw;
+  
+  transform: translate(-70%, -95%);
+  cursor: pointer;
+}
+
+
+
+.dialogBox {
+  //대화창 박스 이미지
+  position: absolute;
+  top: 70%;
+  text-align: center;
+  background: url("img/dialogBox.svg");
+  background-size: cover;
+ z-index: 5;
+  margin-inline: 2px;
+  width: 100vw;
+  height: 28%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.output {
+  //출력되는 텍스트
+  position: absolute;
+  text-align: center;
+  margin-inline: 4px;
+  top: 65px;
+  left: 148px;
+  font-family: 'Cafe24Dangdanghae';
+  color: rgb(35, 35, 43);
+  h1 {
+    font-size: 30px;
+  }
+}
+
+/* Cursor Styling */
+
+.cursor::after {
+  content: "";
+  display: inline-block;
+  margin-left: 3px;
+  background-color: black;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+h1.cursor::after {
+  height: 24px;
+  width: 13px;
+}
+p.cursor::after {
+  height: 13px;
+  width: 6px;
+}
+
+
+.get_buy{
+
+
+
+  margin-inline: 4px;
+  position: absolute;
+  width: 480px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.get_sell{
+//판매 버튼
+  margin-inline: 4px;
+  position: absolute;
+  width: 480px;
+  height: 120px;
+cursor: pointer;
+  
+}
+

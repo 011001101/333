@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import dbutil.DBUtil;
+import DButil.dbutil;
 
 public class Join {
 	public boolean joinst(String id, String password) {
@@ -17,7 +17,7 @@ public class Join {
 		String sql = "INSERT INTO `team3`.`user` (`userId`, `userPassword`) VALUES (?, ?);";
 
 		try {
-			conn = DBUtil.getConnection();
+			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, id);
@@ -36,8 +36,8 @@ public class Join {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
+			dbutil.close(stmt);
+			dbutil.close(conn);
 		}
 		return false;
 	}
@@ -64,7 +64,7 @@ public class Join {
 
 		try {
 			// 데이터베이스 연결
-			conn = DBUtil.getConnection();
+			conn = dbutil.getConnection();
 
 			// SQL 쿼리 작성
 			String sql = "select * from student where id = ? ";
@@ -84,9 +84,9 @@ public class Join {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(rs);
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
+			dbutil.close(rs);
+			dbutil.close(stmt);
+			dbutil.close(conn);
 		}
 		return false;
 	}

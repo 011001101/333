@@ -16,7 +16,7 @@ public class main extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		encyGetSet.setCurrent(0);
+		encyDao.encyGetSet.setCurrent(0);
 		req.getRequestDispatcher("/main.jsp").forward(req, resp);
 	}
 

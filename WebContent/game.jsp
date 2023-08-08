@@ -414,18 +414,20 @@ console.log(okButtonId);
 	var setno = sessionStorage.getItem("setno");
 	var no = null;
 
+	if(setno != 0){
 	for (var i = 0; i <= setno; i++) {
 	    no = sessionStorage.getItem("no" + i);
-
+	    console.log(no);
 	    // 클래스 이름이 ok의 값과 일치하는 요소를 선택
 	    var elementsno = document.querySelectorAll(".plant");
 	    for (var j = 0; j < elements.length; j++) {
 	        if (elementsno[j].getAttribute("name") === no) {
+	        	console.log("여기2");
 	            elementsno[j].style.backgroundImage = "url('img/춘식2.png')";
 	        }
 	    }
+		}
 	}
-	setno = 0;
 	const plantpots = document.querySelectorAll('.plant');
 	plantpots.forEach((plantpot) => {
 	    plantpot.addEventListener('click', () => {
