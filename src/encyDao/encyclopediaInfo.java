@@ -1,4 +1,4 @@
-package encyDao;
+package src.encyDao;
 
 import java.io.IOException;
 import java.io.InputStream;

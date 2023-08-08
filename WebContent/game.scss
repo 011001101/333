@@ -1,0 +1,331 @@
+.html{
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+  z-index: inherit;
+
+}
+
+
+.body {
+   
+    position: relative;
+    text-align: center;
+    background: url("img/배경.png") no-repeat;
+    background-size: cover;
+    position: fixed;
+
+  }
+
+  #contain-all-moon {
+    position: fixed;
+    z-index: 0;
+    display: inline-block;
+    overflow: hidden;
+    background: rgb(36, 36, 36);
+    border-radius: 50%;
+    width: 300px; // SIZE
+    left: 45%; margin-left: -300px; // POSITION VERTICALLY
+    top: 75%; margin-top: -300px; // POSITION HORIZONTALLY
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: inset 0 -10px black; // for inconsistency in SVG bottom has gap
+    svg {
+      transform-origin: 50% 50%;
+      box-sizing: border-box;
+    }
+    #moon-group {
+      @keyframes hover {
+        50% {transform: translatey(-1%)}
+      }
+      #moon {
+        fill: url(#_rgradient_0);
+        animation: hover 2000ms 500ms ease-in-out infinite;
+      }
+      #aura-group {
+        @keyframes pulse {
+          50% {transform: scale(1.05)}
+        }
+        @for $i from 1 through 3 {
+          #aura-#{$i} {
+            transform-origin: 50% 50%;
+            animation: pulse 3000ms 750ms * $i ease-in-out infinite;
+          }
+        }
+      }
+      #crater-group {
+        @for $i from 1 through 4 {
+          #crater-#{$i} {
+            transform-origin: 50% 50%;
+            animation: hover 2000ms 500ms ease-in-out infinite;
+          }
+        }
+      }
+    }
+  }
+  
+.sun {
+	width: 25rem;
+	height: 25rem;
+  z-index: 0;
+	margin: 0.1rem auto;
+	position: absolute;
+  top:0.1rem;
+  right: 30rem;
+	background: radial-gradient(transparent 50%, white), radial-gradient(yellow, transparent 70%);
+	-webkit-mask-image: radial-gradient(rgba(0, 0, 0, 1.0) 40%, transparent 65%);
+	mask-image: radial-gradient(rgba(0, 0, 0, 1.0) 40%, transparent 65%);
+	border-radius: 50%;
+	
+	&::after,
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transform-origin: center;
+		border-radius: 50%;
+		-webkit-mask-image: radial-gradient(rgba(0, 0, 0, 1.0) 40%, transparent 65%);
+	mask-image: radial-gradient(rgba(0, 0, 0, 1.0) 40%, transparent 65%);
+	}
+	
+	&::before {
+		background: repeating-conic-gradient(from 0deg, yellow 0deg 20deg, transparent 20deg 40deg);
+		animation: rotate 720s linear, scale 1s linear infinite;
+	}
+	
+	&::after {
+		background: radial-gradient(yellow, orange 27%, transparent calc(27% + 3px) 100%), radial-gradient(gold, transparent 70%), repeating-conic-gradient(from 0deg, gold 0deg 5deg, transparent 5deg 10deg);
+		transform: rotate(15deg);
+		animation: rotate 36s linear infinite;
+	}
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes scale {
+	0% {
+		transform: scale(1);
+	}
+	20% {
+		transform: scale(1.2);
+	}
+	40% {
+		transform: scale(0.8);
+	}
+	60% {
+		transform: scale(1.1);
+	}
+	70% {
+		transform: scale(0.9);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.Light{
+
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  width:100vw;
+  height: 50vh;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  top:0%
+  
+}
+
+.Dark{
+
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+width:100vw;
+height: 50vh;
+display: block;
+position: absolute;
+overflow: hidden;
+z-index: 0;
+top:50%
+
+
+}
+
+  
+
+
+
+  .Lightpot{
+
+
+
+
+    position: fixed;
+    text-align: center;
+    width: 75vw;
+    height: 20vh;
+    top: 25%;
+    left: 20%;
+    z-index: 1;
+    background: url("img/shelves.svg") no-repeat;
+
+   
+
+
+    :hover {
+      transform: scale( 2.0, 1.5 )
+    
+    }
+
+  }
+
+
+
+.plant{
+
+    position: relative;
+    text-align: center;
+    width: 4vw;
+    height: 8vh;
+ margin-left: 0.6rem;
+ bottom: 3rem;
+    background: url("img/plant.svg") no-repeat;
+    z-index: 1;
+   
+
+}
+
+
+
+.plantpot{
+
+  margin-left: 1em;
+  float: right;
+    position: relative;
+    text-align: center;
+    width: 5vw;
+    height: 9.5vh;
+    align-items: center;
+    z-index: 2;
+    cursor: pointer;
+    background: url("img/pot.svg") no-repeat;
+
+
+
+}
+
+
+  .Darkpot{
+
+
+    position: fixed;
+    text-align: center;
+    width: 72vw;
+    height: 20vh;
+    bottom: 10%;
+    left: 25%;
+    z-index: 1;
+    background: url("img/shelves.svg") no-repeat;
+
+
+   
+    :hover {
+      transform: scale( 2.0, 1.5 )
+    }
+
+  }
+
+
+
+
+  
+ 
+
+ 
+  .goBack {
+    
+  position: sticky;
+  width: 10rem;
+  height: 10rem;
+  bottom: 95rem;
+  left: 0%;
+  background-color:rgb(255, 82, 82);
+  z-index: 3;
+  }
+
+
+   
+.Whatis{
+
+  position: sticky;
+  width: 25rem;
+  height: 40rem;
+
+  left: 40px;
+  background-color: aqua;
+  z-index: 3;
+  
+  
+  }
+ 
+
+  .Status{
+
+    position: sticky;
+    width: 25rem;
+    height: 20rem;
+    left: 40px;
+    background-color:seagreen;
+    z-index: 3;
+    
+    
+    }
+   
+
+$blue: #0E3E4E;
+$dark: #222226;
+
+
+.star {
+  position: relative;
+  top: -120px;
+  margin-top: -10%;
+  margin-left: 5%;
+
+svg {
+  width: 100vw;
+  height: 60vh;
+  margin-top: 10%;
+}
+
+#Path-4, #Path-2, #Path-3 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s linear infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gleam {
+  100% {
+    fill: #D69E00;
+    opacity: 0.8;
+  }
+}
+}
+
+
+

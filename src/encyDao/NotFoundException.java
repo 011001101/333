@@ -1,4 +1,4 @@
-package encyDao;
+package src.encyDao;
 
 public class NotFoundException extends RuntimeException{
 	public NotFoundException(String message) {
