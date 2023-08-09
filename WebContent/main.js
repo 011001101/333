@@ -3,7 +3,7 @@
  }
 
  function encygo() {
-    window.location.href = "/333/ency";
+    window.location.href = "encyclopedia.jsp";
  }
 
  function gamego() {

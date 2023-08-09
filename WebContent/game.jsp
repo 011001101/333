@@ -145,7 +145,7 @@
                         <path d="M51.333 200c0-82.051 66.616-148.667 148.667-148.667S348.667 117.949 348.667 200 282.051 348.667 200 348.667 51.333 282.051 51.333 200z" id="aura-3" />
                     </g>
     
-                <!-- 	moon		 -->
+                <!--    moon       -->
                     <radialGradient id="_rgradient_0" fx=".5" fy=".5" cx=".5" cy=".5" r=".5" gradientTransform="translate(107.867 107.867) scale(184.265)" gradientUnits="userSpaceOnUse">
                         <stop offset="88.69218161%" stop-color="#ffe" />
                         <stop offset="100%" stop-color="#fff" />

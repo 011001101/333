@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.servlet.annotation.WebServlet;
 
 import dbutil.DBUtil;
+import DButil.dbutil;
 
 @WebServlet("/join")
 public class Join {
@@ -20,7 +21,7 @@ public class Join {
 		String sql = "INSERT INTO `team3`.`user` (`userId`, `userPassword`) VALUES (?, ?);";
 
 		try {
-			conn = DBUtil.getConnection();
+			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, id);
@@ -39,8 +40,8 @@ public class Join {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
+			dbutil.close(stmt);
+			dbutil.close(conn);
 		}
 		return false;
 	}
@@ -67,7 +68,7 @@ public class Join {
 
 		try {
 			// 데이터베이스 연결
-			conn = DBUtil.getConnection();
+			conn = dbutil.getConnection();
 
 			// SQL 쿼리 작성
 			String sql = "select * from student where id = ? ";
@@ -87,9 +88,9 @@ public class Join {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(rs);
-			DBUtil.close(stmt);
-			DBUtil.close(conn);
+			dbutil.close(rs);
+			dbutil.close(stmt);
+			dbutil.close(conn);
 		}
 		return false;
 	}
