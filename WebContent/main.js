@@ -9,8 +9,3 @@
  function gamego() {
     window.location.href = "game.jsp";
  }
-// function test(){
-//	window.location.href = "test.jsp";
-//}
-//    window.location.href = "game";
-// }

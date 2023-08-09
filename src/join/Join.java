@@ -13,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import dbutil.DBUtil;
 import DButil.dbutil;
 
-@WebServlet("/join")
 public class Join {
 	public boolean joinst(String id, String password) {
 		Connection conn = null;

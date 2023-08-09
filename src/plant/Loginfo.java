@@ -15,21 +15,38 @@ public class Loginfo extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/login.jsp").forward(req, resp);
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = (String) req.getParameter("id");
-		String password = (String) req.getParameter("password");
-		HttpSession session = req.getSession();
-		Login a = new Login();
-		if (a.loginst(id, password)) {
-			System.out.println("로그인제출 진입");
-			session.setAttribute("no", "no");
-			req.getRequestDispatcher("/login.jsp").forward(req, resp);
-		} else {
-			// 메인으로 이동
-			session.setAttribute("userid", id);
-			resp.sendRedirect("main");
-		}
+	    String id = (String) req.getParameter("id");
+	    String password = (String) req.getParameter("password");
+	    HttpSession session = req.getSession();
+	    Login login = new Login();
+	    
+	    // 실제로는 DB에서 로그인 정보 확인해야 함
+	    if (login.loginst(id, password)) {
+	        session.setAttribute("no", "no");
+	        resp.getWriter().write("success");
+	    } else {
+	        session.setAttribute("userid", id);
+	        resp.getWriter().write("failure");
+	    }
 	}
+
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		String id = (String) req.getParameter("id");
+//		String password = (String) req.getParameter("password");
+//		HttpSession session = req.getSession();
+//		Login a = new Login();
+//		if (a.loginst(id, password)) {
+//			System.out.println("로그인제출 진입");
+//			session.setAttribute("no", "no");
+//			req.getRequestDispatcher("/login.jsp").forward(req, resp);
+//		} else {
+//			// 메인으로 이동
+//			session.setAttribute("userid", id);
+//			resp.sendRedirect("main");
+//		}
+//	}
 }

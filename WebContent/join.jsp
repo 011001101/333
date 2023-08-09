@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="join.css">
 </head>
 <body>
-  <div class="a"></div>
+  <div class="b"></div>
   <div class="join-container">
     <h1>Join</h1>
     <form>
