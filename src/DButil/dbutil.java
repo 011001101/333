@@ -11,24 +11,30 @@ import javax.sql.DataSource;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
+
+
 public class dbutil {
 	private static DataSource ds;
 
 	static {
 		try {
 			Properties prop = new Properties();
-			ClassLoader classLoader = dbutil.class.getClassLoader();
-			prop.load(classLoader.getResourceAsStream("world.properties"));
-
+			prop.load(dbutil.class.getResourceAsStream("world.properties"));
+			
+			
 			BasicDataSource basic = new BasicDataSource();
+
+			// 데이터 소스의 설정
 			basic.setUrl(prop.getProperty("jdbcURL"));
 			basic.setDriverClassName(prop.getProperty("jdbcDriverName"));
-			basic.setUsername(prop.getProperty("jdbcUserName"));
+			basic.setUsername(prop.getProperty("JdbcUserName"));
 			basic.setPassword(prop.getProperty("jdbcPassword"));
 
 			ds = basic;
+
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -45,7 +51,7 @@ public class dbutil {
 			}
 		}
 	}
-
+	
 	public static void close(Statement stmt) {
 		if (stmt != null) {
 			try {
@@ -55,7 +61,7 @@ public class dbutil {
 			}
 		}
 	}
-
+	
 	public static void close(ResultSet rs) {
 		if (rs != null) {
 			try {
@@ -65,5 +71,4 @@ public class dbutil {
 			}
 		}
 	}
-
 }
