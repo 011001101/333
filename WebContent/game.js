@@ -20,7 +20,6 @@ for(var i = 1; i <= 27; i++) {
 
 
 
-
 function seed(o){
 
 
@@ -34,14 +33,14 @@ function seed(o){
     };
 
     openInven();
-    //인벤토리 불러오기
+/*    //인벤토리 불러오기
 
     //씨앗 선택하기
 
     //씨앗 정보 json으로 뭉쳐서 db로 보내주기
 
 
-    //이미지 바꾸기
+    //이미지 바꾸기*/
 
     $('.plant').replaceWith('<img src="불룩한 흙" />');
 }
@@ -56,3 +55,25 @@ function harvest(o){
         $(this).remove(); // 애니메이션이 끝나면 제거
     });
 }
+
+ $(function() {
+
+    var w = $(window).width(),
+      h = $(window).height();
+    //$('section').width(w);
+    $('section').height(h);
+    $('menu .container').height(h - 60);
+    $('body').prepend('<div id="overlay">');
+  
+    $('.plant').click(function() {$('html').addClass('active');});
+    $('#close-menu').click(function() {$('html').removeClass('active');});
+    $('#overlay').click(function() {$('html').removeClass('active');});
+    $(window).resize(function() {
+      var w = $(window).width(),
+        h = $(window).height();
+      //$('section').width(w);
+      $('section').height(h);
+      $('menu .container').height(h - 60);
+    });
+  
+  });
