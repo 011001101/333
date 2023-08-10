@@ -2,6 +2,7 @@ package encyDao;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +20,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
 
+import DButil.Test;
 
 public class encyclopediaInfo extends HttpServlet {
 
@@ -27,14 +30,44 @@ public class encyclopediaInfo extends HttpServlet {
 	private int value;
 	private final static int A = 2;
 	
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/encyclopedia.jsp").forward(req, resp);
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		
+		String test = req.getParameter("p");
+		
+		System.out.println(test + "변환값");
+        // JSON 데이터 생성
+        String abc = "Some value"; // abc 속성 값 설정
+        String jsonResponse = "{\"abc\": \"" + abc + "\"}";
+
+        // JSON 데이터 전송
+        resp.getWriter().write(jsonResponse);
+        req.getRequestDispatcher("/encyclopedia.jsp").forward(req, resp);
+        
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String valueStr = req.getParameter("value");
+		String a = req.getParameter("p");
+			try {
+				if(a != null) {
+				value = Integer.parseInt(a);
+				System.out.println(value);
+				System.out.println(encyclopedia(value));
+				} else {
+				System.out.println("값이없음");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println(e.getMessage() + "캐치부분");
+			}
+				
+			
+		//		String valueStr = req.getParameter("value");
 //		System.out.println(valueStr);
 //		value = Integer.parseInt(valueStr);
 //		System.out.println("형변환" + value);
@@ -43,14 +76,16 @@ public class encyclopediaInfo extends HttpServlet {
 //        
 //		List<String> result = encyclopedia(value);
 //		req.setAttribute("encyList", result);
-//		req.getRequestDispatcher("encyclopedia.jsp").forward(req, resp);
+		req.getRequestDispatcher("encyclopedia.jsp").forward(req, resp);
 	}
 
-	public List<String> encyclopedia(int pageNo) {
-		if(pageNo < 0) {
-			pageNo = 0;
+	public List<String> encyclopedia(int a) {
+		if(a < 0) {
+			a = 0;
 		}
-
+		if(a == 1) {
+			a = 0;
+		}
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -66,7 +101,7 @@ public class encyclopediaInfo extends HttpServlet {
 
 
 			stmt = conn.prepareStatement("SELECT * FROM plant LIMIT ?, ?");
-			stmt.setInt(1, pageNo);
+			stmt.setInt(1, a);
 			stmt.setInt(2, A);
 			rs = stmt.executeQuery();
 
@@ -179,5 +214,4 @@ public class encyclopediaInfo extends HttpServlet {
 		}
 		return null;
 	}
-
 }

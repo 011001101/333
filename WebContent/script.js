@@ -66,6 +66,7 @@ function drawInventory() {
     const inventoryContainer = document.getElementById("BuyInventory");
     inventoryContainer.innerHTML = "";
 
+
     for (let row = 0; row < inventorySize; row++) {
         for (let col = 0; col < inventorySize; col++) {
             const cell = document.createElement("div");
@@ -76,7 +77,9 @@ function drawInventory() {
             cell.setAttribute("data-col", col);
         
             if (inventory[row][col]) {
-                cell.textContent = inventory[row][col];
+				const img = document.createElement("img");
+				img.src = inventory[row][col];
+                cell.appendChild(img);
             }
 
             cell.addEventListener("click", toggleItem);

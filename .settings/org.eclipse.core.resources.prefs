@@ -3,6 +3,7 @@
 >>>>>>>=branch 'master' of https\://github.com/011001101/333.git
 eclipse.preferences.version=1
 encoding//WebContent/ShopMain.jsp=UTF-8
+encoding//WebContent/encyclopedia.jsp=UTF-8
 encoding//WebContent/game.jsp=UTF-8
 encoding//WebContent/inventory.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8

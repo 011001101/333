@@ -13,6 +13,7 @@ public class encyGetSet {
     private String plantLuminous;
     private String plantWatering;
     private String plantPoint;
+    private String param;
     
     private static int current;
 	
@@ -27,6 +28,12 @@ public class encyGetSet {
 		this.plantLuminous = plantLuminous;
 		this.plantWatering = plantWatering;
 		this.plantPoint = plantPoint;
+	}
+    public String getParam() {
+		return param;
+	}
+    public void setParam(String param) {
+		this.param = param;
 	}
 	public encyGetSet() {
 		
