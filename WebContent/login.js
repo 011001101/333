@@ -10,9 +10,9 @@ function login() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         if (xhr.responseText === 'success') {
-          document.getElementById('message').textContent = '로그인 성공';
+          document.getElementById('message').textContent = 'success';
         } else {
-          document.getElementById('message').textContent = '로그인 실패. 유효한 사용자 이름과 비밀번호를 입력하세요.';
+          document.getElementById('message').textContent = 'fail';
         }
       }
     }

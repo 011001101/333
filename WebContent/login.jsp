@@ -11,10 +11,10 @@
   <div class="a"></div>
   <div class="login-container">
     <h1>Login</h1>
-    <form>
+    <form action="Loginfo" method="post">
       <input type="text" id="id" placeholder="id">
       <input type="password" id="password" placeholder="Password">
-      <button type="button" onclick="login()">Login</button>
+      <button type="submit" onclick="login()">Login</button>
     </form>
     <p id="message"></p>
   </div>
