@@ -1,8 +1,7 @@
-<%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,52 +51,53 @@
 	<div class="Light">
 
 		<div class="sun"></div>
+
 		<div class="Lightpot" name="pot">
 			<div class="plantpot" name="plant1" type="button">
-				<div class="plant" name="green1" type="button "></div>
+				<div class="plant" name="green1" type="button"></div>
 			</div>
-			<div class="plantpot" name="plant2" type="button ">
-				<div class="plant" name="green2" type="button "></div>
-			</div>
-
-			<div class="plantpot" name="plant3" type="button ">
-				<div class="plant" name="green3" type="button "></div>
+			<div class="plantpot" name="plant2" type="button">
+				<div class="plant" name="green2" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant4" type="button ">
-				<div class="plant" name="green4" type="button "></div>
+			<div class="plantpot" name="plant3" type="button">
+				<div class="plant" name="green3" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant5" type="button ">
-				<div class="plant" name="green5" type="button "></div>
+			<div class="plantpot" name="plant4" type="button">
+				<div class="plant" name="green4" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant6" type="button ">
-				<div class="plant" name="green6" type="button "></div>
+			<div class="plantpot" name="plant5" type="button">
+				<div class="plant" name="green5" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant7" type="button ">
-				<div class="plant" name="green7" type="button "></div>
+			<div class="plantpot" name="plant6" type="button">
+				<div class="plant" name="green6" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant8" type="button ">
-				<div class="plant" name="green8" type="button "></div>
+			<div class="plantpot" name="plant7" type="button">
+				<div class="plant" name="green7" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant9" type="button ">
-				<div class="plant" name="green9" type="button "></div>
+			<div class="plantpot" name="plant8" type="button">
+				<div class="plant" name="green8" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant10" type="button ">
-				<div class="plant" name="green10" type="button "></div>
+			<div class="plantpot" name="plant9" type="button">
+				<div class="plant" name="green9" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant11" type="button ">
-				<div class="plant" name="green11" type="button "></div>
+			<div class="plantpot" name="plant10" type="button">
+				<div class="plant" name="green10" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant12" type="button ">
-				<div class="plant" name="green12" type="button "></div>
+			<div class="plantpot" name="plant11" type="button">
+				<div class="plant" name="green11" type="button"></div>
+			</div>
+
+			<div class="plantpot" name="plant12" type="button">
+				<div class="plant" name="green12" type="button"></div>
 			</div>
 
 
@@ -250,53 +250,54 @@
 
 
 
-			<div class="plantpot" name="plant13" type="button ">
-				<div class="plant" name="green13" type="button "></div>
+
+			<div class="plantpot" name="plant13" type="button">
+				<div class="plant" name="green13" type="button"></div>
 			</div>
 
 
-			<div class="plantpot" name="plant14" type="button ">
-				<div class="plant" name="green14" type="button "></div>
+			<div class="plantpot" name="plant14" type="button">
+				<div class="plant" name="green14" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant15" type="button ">
-				<div class="plant" name="green15" type="button "></div>
+			<div class="plantpot" name="plant15" type="button">
+				<div class="plant" name="green15" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant16" type="button ">
-				<div class="plant" name="green16" type="button "></div>
+			<div class="plantpot" name="plant16" type="button">
+				<div class="plant" name="green16" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant17" type="button ">
-				<div class="plant" name="green17" type="button "></div>
+			<div class="plantpot" name="plant17" type="button">
+				<div class="plant" name="green17" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant18" type="button ">
-				<div class="plant" name="green18" type="button "></div>
+			<div class="plantpot" name="plant18" type="button">
+				<div class="plant" name="green18" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant19" type="button ">
-				<div class="plant" name="green19" type="button "></div>
+			<div class="plantpot" name="plant19" type="button">
+				<div class="plant" name="green19" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant20" type="button ">
-				<div class="plant" name="green20" type="button "></div>
+			<div class="plantpot" name="plant20" type="button">
+				<div class="plant" name="green20" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant21" type="button ">
-				<div class="plant" name="green21" type="button "></div>
+			<div class="plantpot" name="plant21" type="button">
+				<div class="plant" name="green21" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant22" type="button ">
-				<div class="plant" name="green22" type="button "></div>
+			<div class="plantpot" name="plant22" type="button">
+				<div class="plant" name="green22" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant23" type="button ">
-				<div class="plant" name="green23" type="button "></div>
+			<div class="plantpot" name="plant23" type="button">
+				<div class="plant" name="green23" type="button"></div>
 			</div>
 
-			<div class="plantpot" name="plant24" type="button ">
-				<div class="plant" name="green24" type="button "></div>
+			<div class="plantpot" name="plant24" type="button">
+				<div class="plant" name="green24" type="button"></div>
 			</div>
 
 
@@ -318,10 +319,9 @@
 	</menu>
 
 
-
-	<script src="script.js"></script>
-</body>
 <script>
+
+
 //1단계, 2단계일때는 마우스 상호작용 불가능하게 만들고, 3단계(다 컸음)일때만 상호작용 되도록
 
 //흙일 때 클릭 후, 인벤토리 꺼내서 씨앗 심기
@@ -340,31 +340,66 @@ for(var i = 1; i <= 27; i++) {
 }
 //이건 별 그리는 함수임 
 
+
+
 function seed(o){
 
 
  function openInven(){
 
+
+     
+
+
+
  };
 
  openInven();
- //인벤토리 불러오기
+/*    //인벤토리 불러오기
 
  //씨앗 선택하기
 
  //씨앗 정보 json으로 뭉쳐서 db로 보내주기
 
 
- //이미지 바꾸기
+ //이미지 바꾸기*/
 
  $('.plant').replaceWith('<img src="불룩한 흙" />');
 }
+
+
+
+
+
 
 function harvest(o){
  $(o).animate( { top:'-=200', opacity:0 }, 200, function(){
      $(this).remove(); // 애니메이션이 끝나면 제거
  });
 }
+
+$(function() {
+
+ var w = $(window).width(),
+   h = $(window).height();
+ //$('section').width(w);
+ $('section').height(h);
+ $('menu .container').height(h - 60);
+ $('body').prepend('<div id="overlay">');
+
+ $('.plant').click(function() {$('html').addClass('active');});
+ $('#close-menu').click(function() {$('html').removeClass('active');});
+ $('#overlay').click(function() {$('html').removeClass('active');});
+ $(window).resize(function() {
+   var w = $(window).width(),
+     h = $(window).height();
+   //$('section').width(w);
+   $('section').height(h);
+   $('menu .container').height(h - 60);
+ });
+
+});
+
 
 var okButtonId = null;
 <%Map<String, List<String>> m = (Map<String, List<String>>) session.getAttribute("gamein");
@@ -375,10 +410,9 @@ if (m.get("ok") != null) {
 		String a = ok.get(i);%>
 	okButtonId = "<%=a%>";
 sessionStorage.setItem("ok<%=i%>", okButtonId);
-sessionStorage.setItem("setok", <%=i%>);
+sessionStorage.setItem("setok", <%=i + 1%>);
 console.log(okButtonId);
-<%a = null;
-}
+<%}
 }
 if (m.get("no") != null) {
 List<String> no = m.get("no");
@@ -387,21 +421,26 @@ for (int i = 0; i < no.size(); i++) {
 String a = no.get(i);%>
 okButtonId = "<%=a%>";
 sessionStorage.setItem("no<%=i%>", okButtonId);
-sessionStorage.setItem("setno", <%=i%>);
+sessionStorage.setItem("setno", <%=i + 1%>);
 console.log(okButtonId);
-<%a = null;
-}
-}
-m = null;%>
-console.log(okButtonId);
+<%}
+}%>
+
+
+
+
+
+var imglist = '<%=session.getAttribute("imglistJ")%>';
+
+sessionStorage.setItem("imglistJ", imglist);
+
 	var set = sessionStorage.getItem("setok");
-	console.log(set);
 	var ok = null;
 	if(set != 0){
-	for (var i = 0; i <= set; i++) {
+	for (var i = 0; i < set; i++) {
 	    ok = sessionStorage.getItem("ok" + i);
-	    console.log(ok);
 	    // 클래스 이름이 ok의 값과 일치하는 요소를 선택
+	    console.log(ok);
 	    var elements = document.querySelectorAll(".plant");
 	    for (var j = 0; j < elements.length; j++) {
 	        if (elements[j].getAttribute("name") === ok) {
@@ -409,25 +448,26 @@ console.log(okButtonId);
 	            elements[j].style.backgroundImage = "url('img/plant.svg')";
 	        }
 	    }
+	    sessionStorage.removeItem("ok" + i);
 	}
 	}
 	var setno = sessionStorage.getItem("setno");
 	var no = null;
-
 	if(setno != 0){
 	for (var i = 0; i <= setno; i++) {
 	    no = sessionStorage.getItem("no" + i);
-	    console.log(no);
 	    // 클래스 이름이 ok의 값과 일치하는 요소를 선택
 	    var elementsno = document.querySelectorAll(".plant");
-	    for (var j = 0; j < elements.length; j++) {
+	    for (var j = 0; j < elementsno.length; j++) {
 	        if (elementsno[j].getAttribute("name") === no) {
-	        	console.log("여기2");
 	            elementsno[j].style.backgroundImage = "url('img/춘식2.png')";
 	        }
 	    }
-		}
+	    sessionStorage.removeItem("no" + i);
 	}
+	}
+	
+	
 	const plantpots = document.querySelectorAll('.plant');
 	plantpots.forEach((plantpot) => {
 	    plantpot.addEventListener('click', () => {
@@ -457,33 +497,15 @@ console.log(okButtonId);
 		    	      		}
 		    	    	};
 		    	    	xhr.send("buttonId=" + encodeURIComponent(buttonId)+"&plant=" + "plant");
-		    	    } 
+		    	    	
+		    	    } else {
+		    	    	sessionStorage.removeItem("plant");
+		    	    }
 	            }
 	    });
 	});
-
-$(function() {
-
-    var w = $(window).width(),
-      h = $(window).height();
-    //$('section').width(w);
-    $('section').height(h);
-    $('menu .container').height(h - 60);
-    $('body').prepend('<div id="overlay">');
-  
-    $('.plant').click(function() {
-    	  $(this).css('background-image', 'url("img/춘식1.png")');
-    	  $('html').addClass('active');
-    	});
-    $('#close-menu').click(function() {$('html').removeClass('active');});
-    $('#overlay').click(function() {$('html').removeClass('active');});
-    $(window).resize(function() {
-      var w = $(window).width(),
-        h = $(window).height();
-      //$('section').width(w);
-      $('section').height(h);
-      $('menu .container').height(h - 60);
-    });
-});
 </script>
+	<script src="script.js"></script>
+</body>
+
 </html>

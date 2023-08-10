@@ -1,13 +1,15 @@
 package plant;
 
+import java.io.Console;
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import DButil.dbutil;
 
 @WebServlet("/game")
@@ -27,26 +31,38 @@ public class Game extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("userid");
+//		String id = (String) session.getAttribute("userid");
+		String id = "aa";
 		System.out.println(id);
 		session.setAttribute("inven", item(id));
 		Map<String, List<String>> map = nowplant(id);// 현재 심어진 식물
 		session.setAttribute("gamein", map);
 		System.out.println(map.toString());
+		Gson gson = new Gson();
+		List<byte[]> imglist = item(id); // 이미지 byte 타입으로 가져오기
+		System.out.println(imglist);
+		
+		List<String> imgEncode = new ArrayList<>();
+		Encoder encode = Base64.getEncoder();
+		for (int j = 0; j < imglist.size(); j++) {
+			String encodeStr = encode.encodeToString(imglist.get(j));
+			imgEncode.add(encodeStr);
+		}
+		String imglistJson = gson.toJson(imgEncode);
+		session.setAttribute("imglistJ", imglistJson);
 		req.getRequestDispatcher("/game.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		String plant = (String) req.getParameter("plant");
-		String but = (String) req.getParameter("buttonId");// (식물 심는곳)몇번째 자리인지
+		String plant = req.getParameter("plant");
+		String but = req.getParameter("buttonId");// (식물 심는곳)몇번째 자리인지
+		System.out.println(but);
+		// String id = (String) session.getAttribute("userid");
+		String id = "aa";
 		if (plant != null && plant.equals("plant")) {
-			req.removeAttribute("plant");
-			String plant2 = (String) req.getParameter("plant");
-			System.out.println(plant2);
 			if (but != null) {
-				String id = (String) session.getAttribute("userid");
 				System.out.println(but);
 				String plantName = itemplus1(id, but);// 뽑은 식물 이름 가져옴
 				System.out.println(plantName);
@@ -57,9 +73,7 @@ public class Game extends HttpServlet {
 			}
 		} else {
 			System.out.println("작동 3");
-			String userid = (String) session.getAttribute("userid");// 유저 아이디
-			System.out.println(userid);
-			List<Integer> nolist = itemNo(userid);
+			List<Integer> nolist = itemNo(id);
 			System.out.println(nolist.toString());
 			String inv = (String) req.getParameter("invencl");// 인벤토리 자리
 			System.out.println(inv);
@@ -67,8 +81,8 @@ public class Game extends HttpServlet {
 			System.out.println(b);
 			if (nolist.size() != 0 && nolist.size() >= b) {
 				int c = nolist.get(b);
-				newplant(userid, c, but, ck(getplantgr(c), but)); // 식물 심음
-				delectIv(userid, c);// 사용한 아이템 삭제
+				newplant(id, c, but, ck(getplantgr(c), but)); // 식물 심음
+				delectIv(id, c);// 사용한 아이템 삭제
 			}
 		}
 		resp.sendRedirect("/333/game");
@@ -136,20 +150,21 @@ public class Game extends HttpServlet {
 		return -1;
 	}
 
-	public byte[] item(String id) {
+	public List<byte[]> item(String id) {
 		byte[] by = null;
+		List<byte[]> img = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT plantImage\r\n" + "FROM inventory AS a\r\n"
-				+ "INNER JOIN plant AS b ON a.no = b.plantNo\r\n" + "WHERE a.userId = ? AND plantGroup LIKE '%씨앗주머니%';";
+		String sql = "SELECT itemImage FROM inventory AS a INNER JOIN shop AS b ON a.shopNo = b.no WHERE a.userId = ? AND itemGroup LIKE '%씨앗주머니%' AND itemName NOT LIKE '%.%' group by shopNo;";
 		try {
 			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				by = rs.getBytes("plantImage");
+				by = rs.getBytes("itemImage");
+				img.add(by);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -158,7 +173,7 @@ public class Game extends HttpServlet {
 			dbutil.close(stmt);
 			dbutil.close(conn);
 		}
-		return by;
+		return img;
 	}
 
 	public List<Integer> itemNo(String id) {
@@ -166,14 +181,14 @@ public class Game extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT plantNo FROM inventory as a INNER JOIN plant AS b ON a.no = b.plantNo WHERE a.userId = ? AND plantGroup LIKE '%씨앗주머니%';";
+		String sql = "SELECT b.no FROM inventory as a INNER JOIN shop AS b ON a.shopNo = b.no WHERE a.userId = ? AND itemGroup LIKE '%씨앗주머니%' AND itemName NOT LIKE '%.%' group by shopNo;";
 		try {
 			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				int shopNo = rs.getInt("plantNo");
+				int shopNo = rs.getInt("b.no");
 				list.add(shopNo);
 			}
 		} catch (SQLException e) {
@@ -376,7 +391,7 @@ public class Game extends HttpServlet {
 		try {
 			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, plantname + "(완성)");
+			stmt.setString(1, plantname + ".");
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				return rs.getInt("no");
