@@ -1,3 +1,26 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const joinButton = document.getElementById('joinButton');
+  joinButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    const idInput = document.getElementById('id');
+    const passwordInput = document.getElementById('password');
+    
+    if (idInput.value.trim() === "" || passwordInput.value.trim() === "") {
+      var modal = document.getElementById("missing-input-modal");
+      modal.style.display = "flex";
+    } else {
+      document.getElementById('join-form').submit();
+    }
+  });
+
+  const modalClose = document.getElementById("modalClose");
+  modalClose.addEventListener("click", function() {
+    var modal = document.getElementById("missing-input-modal");
+    modal.style.display = "none";
+  });
+});
+
+
 function join(e) {
   e.preventDefault(); // 기본 동작 막음
 
@@ -42,7 +65,6 @@ function sendJoinRequest(id, password) {
 
   // 요청 전송
   xhr.send(data);
-  e.preventDefault(); // 폼 제출 중지
 }
 
 function validateForm() {
@@ -74,8 +96,19 @@ function validatePassword(password) {
   return pattern.test(password);
 }
 
-// HTML에서 호출 시 join 함수에 이벤트 객체를 전달하는 예시:
+// 가입하기 버튼 클릭 시 모달 띄우기
 const joinButton = document.getElementById('joinButton');
 joinButton.addEventListener('click', function(e) {
-  join(e);
+  e.preventDefault(); // 기본 동작 막기
+  const idInput = document.querySelector('input[name="id"]');
+  const passwordInput = document.querySelector('input[name="password"]');
+  
+  if (idInput.value.trim() === "" || passwordInput.value.trim() === "") {
+    // 아이디나 비밀번호가 비어있을 때 모달 띄우기
+    var modal = new bootstrap.Modal(document.getElementById("missing-input-modal"));
+    modal.show();
+  } else {
+    // 모든 조건이 충족되면 폼 제출
+    document.getElementById('join-form').submit();
+  }
 });
