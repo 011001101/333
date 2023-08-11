@@ -7,5 +7,5 @@
  }
 
  function gamego() {
-    window.location.href = "game";
+    window.location.href = "game.jsp";
  }

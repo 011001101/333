@@ -73,10 +73,10 @@
        <ul class="menu_wrap">
       <div class="BuyInventory" id="BuyInventory">
         <!-- 각 칸에 해당하는 div 요소들을 동적으로 생성할 예정 -->
+      <img src="img/a.png" alt="춘식2 이미지">
        </ul>
       </div>
   </div>
-
 
     <!-- 판매용 -->
 

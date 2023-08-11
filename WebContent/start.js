@@ -448,3 +448,11 @@ function loop(f) {
 }
 
 loop();
+
+function myFunction() {
+    console.log("Function called"); // 이 부분을 추가합니다.
+
+    // 이동할 URL을 설정합니다.
+    var url = "insert.jsp";
+    window.location.href = url;
+}

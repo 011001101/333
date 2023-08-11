@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.annotation.WebServlet;
+
 import DButil.dbutil;
 
 
@@ -13,7 +15,7 @@ public class Login {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from user where userId = ? and userPassword = ?";
+		String sql = "SELECT * FROM user WHERE userId = ? AND userPassword = ?";
 
 		try {
 			conn = dbutil.getConnection();
