@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import userSt.User;
-
-
 @WebServlet("/Loginfo")
 public class Loginfo extends HttpServlet {
 
@@ -51,18 +48,8 @@ public class Loginfo extends HttpServlet {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if (resultSet.next()) {
-				// 로그인 성공
-				session.setAttribute("userId", userId);
-				resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-				resp.setHeader("Pragma", "no-cache");
-				resp.setHeader("Expires", "0");
 				String id = resultSet.getString("userId");
-				int point = resultSet.getInt("point");
-				int exp = resultSet.getInt("exp");
-				User use = new User(id, point, exp);
-				System.out.println(use.getId());
-				System.out.println(use.getExp());
-				System.out.println(use.getPoint());
+				session.setAttribute("userId", id);
 				
 				resp.sendRedirect("/333/main.html");
 			} else {

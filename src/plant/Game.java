@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.mysql.cj.jdbc.SuspendableXAConnection;
 
 import DButil.dbutil;
 
@@ -30,23 +31,20 @@ public class Game extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-//		String id = (String) session.getAttribute("userid");
-		String id = "aa";
-		System.out.println(id);
+		String id = (String) session.getAttribute("userId");
 		session.setAttribute("inven", item(id));
+		System.out.println(id);
 		Map<String, List<String>> map = nowplant(id);// 현재 심어진 식물
 		session.setAttribute("gamein", map);
-		System.out.println(map.toString());
+		// 이부분은 갱신할 필요는 없음
 		Gson gson = new Gson();
 		List<byte[]> imglist = item(id); // 이미지 byte 타입으로 가져오기
-		System.out.println(imglist);
-
 		List<String> imgEncode = new ArrayList<>();
 		Encoder encode = Base64.getEncoder();
 		for (int j = 0; j < imglist.size(); j++) {
 			String encodeStr = encode.encodeToString(imglist.get(j));
 			imgEncode.add(encodeStr);
-		}
+		} // byte타입을 Base64 String 으로 변환
 		String imglistJson = gson.toJson(imgEncode);
 		session.setAttribute("imglistJ", imglistJson);
 		req.getRequestDispatcher("/game.jsp").forward(req, resp);
@@ -57,28 +55,24 @@ public class Game extends HttpServlet {
 		HttpSession session = req.getSession();
 		String plant = req.getParameter("plant");
 		String but = req.getParameter("buttonId");// (식물 심는곳)몇번째 자리인지
-		System.out.println(but);
-		// String id = (String) session.getAttribute("userid");
-		String id = "aa";
+		String id = (String) session.getAttribute("userId");
+		System.out.println(id);
 		if (plant != null && plant.equals("plant")) {
 			if (but != null) {
-				System.out.println(but);
 				String plantName = itemplus1(id, but);// 뽑은 식물 이름 가져옴
-				System.out.println(plantName);
 				int plantNo = shopNo(plantName);// 상점의 뽑은 식물 번호 가져오기
-				System.out.println(plantNo);
 				updateInven(id, plantNo);// 인벤토리에 추가
 				setplant(id, but);// 식물 뽑았다고 바꿈
 			}
 		} else {
-			System.out.println("작동 3");
 			List<Integer> nolist = itemNo(id);
 			System.out.println(nolist.toString());
+			System.out.println("사용됨");
 			String inv = (String) req.getParameter("invencl");// 인벤토리 자리
-			System.out.println(inv);
 			int b = Integer.valueOf(inv);
 			System.out.println(b);
 			if (nolist.size() != 0 && nolist.size() >= b) {
+				System.out.println("사용됨2");
 				int c = nolist.get(b);
 				newplant(id, c, but, ck(getplantgr(c), but)); // 식물 심음
 				delectIv(id, c);// 사용한 아이템 삭제
@@ -403,5 +397,9 @@ public class Game extends HttpServlet {
 			dbutil.close(conn);
 		}
 		return 0;
+	}
+
+	private void test() {
+		
 	}
 }

@@ -405,7 +405,6 @@ var okButtonId = null;
 <%Map<String, List<String>> m = (Map<String, List<String>>) session.getAttribute("gamein");
 if (m.get("ok") != null) {
 	List<String> ok = m.get("ok");
-	System.out.println(ok.toString());
 	for (int i = 0; i < ok.size(); i++) {
 		String a = ok.get(i);%>
 	okButtonId = "<%=a%>";
@@ -416,7 +415,6 @@ console.log(okButtonId);
 }
 if (m.get("no") != null) {
 List<String> no = m.get("no");
-System.out.println(no.toString());
 for (int i = 0; i < no.size(); i++) {
 String a = no.get(i);%>
 okButtonId = "<%=a%>";
@@ -473,7 +471,6 @@ sessionStorage.setItem("imglistJ", imglist);
 	    plantpot.addEventListener('click', () => {
 	    	var buttonId = plantpot.getAttribute('name');
 	        sessionStorage.setItem("buttonId", buttonId);
-	        
 	        const computedStyle = window.getComputedStyle(plantpot);
 	        const backgroundImage = computedStyle.getPropertyValue('background-image');
 	        const urlRegex = /url\("(.+)"\)/;

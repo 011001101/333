@@ -56,6 +56,7 @@ console.log(buttonId);
  			if(buttonId != null){
  		   		const r = (row*9)+col;
  		   		sessionStorage.setItem("invencl", r);
+				console.log(r);
  				const xhr = new XMLHttpRequest();
  		   		xhr.open("POST", "/333/game", true);
  		   		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
