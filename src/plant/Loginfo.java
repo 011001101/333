@@ -28,7 +28,7 @@ public class Loginfo extends HttpServlet {
         String userPassword = req.getParameter("userPassword");
         HttpSession session = req.getSession();
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/333";
+        String jdbcUrl = "jdbc:mysql://192.168.0.81:3306/team3";
         String dbUser = "Team3";
         String dbPassword = "team3";
 

@@ -74,7 +74,34 @@ console.log(buttonId);
  //아이템과 상호작용 하는 함수
 
 
-  
+   // 처음 드래그 요소가 위치하고 있는 인벤 영역
+   const Itemcell = document.querySelector(".cell");
+   
+   Itemcell.addEventListener("dragover", (e) => {
+     e.preventDefault();
+     //console.log(e);
+     //console("드래그 요소가 '첫' 번째 박스 영역에 계속 위치하면 발생하는 이벤트");
+   });
+   Itemcell.addEventListener("drop", (e) => {
+     e.preventDefault();
+     //console.log(e);
+     console.log("드래그 요소가 '첫' 번째 박스 영역에 드롭");
+   });
+   
+   
+   // 드래그 요소가 이동하여 위치할 우측 박스 영역
+   const plantpot = document.querySelector(".plantpot");
+   
+   plantpot.addEventListener("dragover", (e) => {
+     e.preventDefault();
+     //console.log(e);
+     //console("드래그 요소가 '두' 번째 박스 영역에 계속 위치하면 발생하는 이벤트");
+   });
+   plantpot.addEventListener("drop", (e) => {
+     e.preventDefault();
+     //console.log(e);
+     console.log("드래그 요소가 '두' 번째 박스 영역에 드롭");
+   });
      
      
    
@@ -85,99 +112,6 @@ console.log(buttonId);
 
  //여기는 메뉴판 스무스하게 움직이게 하는거라 손 안대셔도 됩니당
  $(function() {
-
-const inventorySize = 5;
-let inventory = Array.from({ length: inventorySize }, () => Array(inventorySize).fill(null));
-
-// 인벤토리 그리기
-function drawInventory() {
-    const inventoryContainer = document.getElementById("BuyInventory");
-    inventoryContainer.innerHTML = "";
-
-
-    for (let row = 0; row < inventorySize; row++) {
-        for (let col = 0; col < inventorySize; col++) {
-            const cell = document.createElement("div");
-          
-            cell.classList.add("cell");
-            
-            cell.setAttribute("data-row", row);
-            cell.setAttribute("data-col", col);
-        
-            if (inventory[row][col]) {
-				const img = document.createElement("img");
-				img.src = inventory[row][col];
-                cell.appendChild(img);
-            }
-
-            cell.addEventListener("click", toggleItem);
-            inventoryContainer.appendChild(cell);
-        }
-    }
-}
-
-
-
-// 인벤토리 그리기2
-function drawInventory2() {
-  const inventoryContainer = document.getElementById("SellInventory");
-  inventoryContainer.innerHTML = "";
-
-  for (let row = 0; row < inventorySize; row++) {
-      for (let col = 0; col < inventorySize; col++) {
-          const cell = document.createElement("div");
-        
-          cell.classList.add("cell");
-          
-          cell.setAttribute("data-row", row);
-          cell.setAttribute("data-col", col);
-      
-          if (inventory[row][col]) {
-              cell.textContent = inventory[row][col];
-          }
-
-          cell.addEventListener("click", toggleItem2);
-          inventoryContainer.appendChild(cell);
-      }
-  }
-}
-
-
-function toggleItem(event) {
-  const row = parseInt(event.target.getAttribute("data-row"));
-  const col = parseInt(event.target.getAttribute("data-col"));
-
-  if (inventory[row][col]) {
-      inventory[row][col] = null;
-  } else {
-      // 여기에서 아이템 정보를 입력하면 됩니다.
-      // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-      inventory[row][col] = "아이템"+[row]+[col];
-  }
-
-  drawInventory();
-}
-
-
-function toggleItem2(event) {
-  const row = parseInt(event.target.getAttribute("data-row"));
-  const col = parseInt(event.target.getAttribute("data-col"));
-
-  if (inventory[row][col]) {
-      inventory[row][col] = null;
-  } else {
-      // 여기에서 아이템 정보를 입력하면 됩니다.
-      // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-      inventory[row][col] = "아이템"+[row]+[col];
-  }
-
-  drawInventory2();
-}
-
-
-// 인벤토리 초기화 < 이게 뭐누
-drawInventory();
-drawInventory2();
 
      var w = $(window).width(),
        h = $(window).height();
