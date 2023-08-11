@@ -18,13 +18,13 @@
   <div class="a"></div>
   <div class="login-container">
     <h1>Login</h1>
-    <form method="post" onsubmit="login(event);">
-      <input type="text" id="id" placeholder="id">
-      <input type="password" id="password" placeholder="Password">
+    <form method="post">
+      <input type="text" name="id" id="id" placeholder="id">
+      <input type="password" name="password" id="password" placeholder="Password">
       <button type="submit" onclick="login()">Login</button>
     </form>
     <p id="message"></p>
   </div>
-  <script src="login.js"></script>
+  <!-- <script src="login.js"></script> -->
 </body>
 </html>
