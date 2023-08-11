@@ -1,9 +1,16 @@
+<%@page import="plant.Login"%>
+<%@page import="plant.Loginfo"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="login.css">
 </head>
@@ -11,7 +18,7 @@
   <div class="a"></div>
   <div class="login-container">
     <h1>Login</h1>
-    <form action="Loginfo" method="post">
+    <form method="post" onsubmit="login(event);">
       <input type="text" id="id" placeholder="id">
       <input type="password" id="password" placeholder="Password">
       <button type="submit" onclick="login()">Login</button>

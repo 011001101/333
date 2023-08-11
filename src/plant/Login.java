@@ -15,7 +15,7 @@ public class Login {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from user where userId = ? and userPassword = ?";
+		String sql = "SELECT * FROM user WHERE userId = ? AND userPassword = ?";
 
 		try {
 			conn = dbutil.getConnection();
