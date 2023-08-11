@@ -12,13 +12,15 @@ var propertyCount = Object.keys(imglist).length;
 
      for (let row = 0; row < inventorySize; row++) {
          for (let col = 0; col < inventorySize; col++) {
-            const cell = document.createElement("div");
-           
-            cell.classList.add("cell");
-             
-            cell.setAttribute("data-row", row);
-            cell.setAttribute("data-col", col);
+             const cell = document.createElement("div");
 
+             cell.classList.add("cell");
+
+             cell.setAttribute("data-row", row);
+             cell.setAttribute("data-col", col);
+             cell.draggable=true;
+
+			console.log("사용");
             var imgIndex = (row * inventorySize) + col;
 			if(propertyCount > imgIndex){
                 const img = document.createElement("img");
@@ -26,8 +28,8 @@ var propertyCount = Object.keys(imglist).length;
                 cell.appendChild(img);
 			}
 
-            cell.addEventListener("click", toggleItem);
-            inventoryContainer.appendChild(cell);
+             cell.addEventListener("click", toggleItem);
+             inventoryContainer.appendChild(cell);
          }
      }
  }
@@ -36,27 +38,18 @@ var propertyCount = Object.keys(imglist).length;
 
  //클릭시 각각의 셀로 상호작용 (안에 메소드 고쳐주시면 됩니다롱) 
  function toggleItem(event) {
-    const row = parseInt(event.currentTarget.getAttribute("data-row"));
-    const col = parseInt(event.currentTarget.getAttribute("data-col"));
-
-    console.log("클릭한 셀 - 행:", row, "열:", col);
-
-    const imgIndex = (row * inventorySize) + col;
-    console.log("계산된 imgIndex:", imgIndex);
-
-
-    console.log("row:", row);
-    console.log("col:", col);
+     const row = parseInt(event.target.getAttribute("data-row"));
+     const col = parseInt(event.target.getAttribute("data-col"));
  	const buttonId = sessionStorage.getItem("buttonId");
  	sessionStorage.setItem("buttonId", buttonId);
-console.log(buttonId);
-     
+     if (inventory[row][col]) {
+         inventory[row][col] = null;
+     } else {
          // 여기에서 아이템 정보를 입력하면 됩니다.
          // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
  			if(buttonId != null){
  		   		const r = (row*9)+col;
  		   		sessionStorage.setItem("invencl", r);
-				console.log(r);
  				const xhr = new XMLHttpRequest();
  		   		xhr.open("POST", "/333/game", true);
  		   		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -68,7 +61,8 @@ console.log(buttonId);
  		    	};
  		   		xhr.send("buttonId=" + encodeURIComponent(buttonId)+"&invencl=" + r);
  				}
-     
+     }
+
      drawInventory();
  }
 
@@ -83,7 +77,7 @@ console.log(buttonId);
 
    // 처음 드래그 요소가 위치하고 있는 인벤 영역
    const Itemcell = document.querySelector(".cell");
-   
+
    Itemcell.addEventListener("dragover", (e) => {
      e.preventDefault();
      //console.log(e);
@@ -94,11 +88,11 @@ console.log(buttonId);
      //console.log(e);
      console.log("드래그 요소가 '첫' 번째 박스 영역에 드롭");
    });
-   
-   
+
+
    // 드래그 요소가 이동하여 위치할 우측 박스 영역
    const plantpot = document.querySelector(".plantpot");
-   
+
    plantpot.addEventListener("dragover", (e) => {
      e.preventDefault();
      //console.log(e);
@@ -109,11 +103,11 @@ console.log(buttonId);
      //console.log(e);
      console.log("드래그 요소가 '두' 번째 박스 영역에 드롭");
    });
-     
-     
-   
-     
-   
+
+
+
+
+
 
 
 
@@ -126,7 +120,7 @@ console.log(buttonId);
      $('section').height(h);
      $('menu .container').height(h - 60);
      $('body').prepend('<div id="overlay">');
-   
+
      $('#menu').click(function() {$('html').addClass('active');});
      $('#close-menu').click(function() {$('html').removeClass('active');});
      $('#overlay').click(function() {$('html').removeClass('active');});
@@ -137,5 +131,5 @@ console.log(buttonId);
        $('section').height(h);
        $('menu .container').height(h - 60);
      });
-   
+
    });

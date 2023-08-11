@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -24,6 +25,9 @@ import com.google.gson.Gson;
 import com.mysql.cj.jdbc.SuspendableXAConnection;
 
 import DButil.dbutil;
+import eventloop.MyFlowerEventListener;
+import eventloop.MySun;
+import eventloop.NowFlower;
 
 @WebServlet("/game")
 public class Game extends HttpServlet {
@@ -82,6 +86,8 @@ public class Game extends HttpServlet {
 	}
 
 	public Map<String, List<String>> nowplant(String id) {
+		MySun sun = new MySun();
+		Duration diff = null;
 		LocalDateTime date = LocalDateTime.now();
 		Map<String, List<String>> map = new HashMap<>();
 		List<String> ok = new ArrayList<>();
@@ -103,7 +109,16 @@ public class Game extends HttpServlet {
 					ok.add(seat);
 				} else {
 					no.add(seat);
+					diff = Duration.between(date.toLocalTime(), time.toLocalTime());
+
+					sun.addFlower(new NowFlower(seat, diff.getSeconds()));
 				}
+			}
+			if (no.size() > 0) {
+				sun.setFlowerEventListener(new MyFlowerEventListener());
+
+				Thread sunThread = new Thread(sun);
+				sunThread.start();
 			}
 			map.put("ok", ok);
 			map.put("no", no);
@@ -397,9 +412,5 @@ public class Game extends HttpServlet {
 			dbutil.close(conn);
 		}
 		return 0;
-	}
-
-	private void test() {
-		
 	}
 }
