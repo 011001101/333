@@ -1,6 +1,5 @@
 package plant;
 
-import java.io.Console;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
 
 import DButil.dbutil;
 
@@ -38,18 +37,18 @@ public class Game extends HttpServlet {
 		Map<String, List<String>> map = nowplant(id);// 현재 심어진 식물
 		session.setAttribute("gamein", map);
 		System.out.println(map.toString());
-//		Gson gson = new Gson();
+		Gson gson = new Gson();
 		List<byte[]> imglist = item(id); // 이미지 byte 타입으로 가져오기
 		System.out.println(imglist);
-		
+
 		List<String> imgEncode = new ArrayList<>();
 		Encoder encode = Base64.getEncoder();
 		for (int j = 0; j < imglist.size(); j++) {
 			String encodeStr = encode.encodeToString(imglist.get(j));
 			imgEncode.add(encodeStr);
 		}
-//		String imglistJson = gson.toJson(imgEncode);
-//		session.setAttribute("imglistJ", imglistJson);
+		String imglistJson = gson.toJson(imgEncode);
+		session.setAttribute("imglistJ", imglistJson);
 		req.getRequestDispatcher("/game.jsp").forward(req, resp);
 	}
 

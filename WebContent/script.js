@@ -36,8 +36,14 @@ var propertyCount = Object.keys(imglist).length;
 
  //클릭시 각각의 셀로 상호작용 (안에 메소드 고쳐주시면 됩니다롱) 
  function toggleItem(event) {
-     const row = parseInt(event.target.getAttribute("data-row"));
-    const col = parseInt(event.target.getAttribute("data-col"));
+    const row = parseInt(event.currentTarget.getAttribute("data-row"));
+    const col = parseInt(event.currentTarget.getAttribute("data-col"));
+
+    console.log("클릭한 셀 - 행:", row, "열:", col);
+
+    const imgIndex = (row * inventorySize) + col;
+    console.log("계산된 imgIndex:", imgIndex);
+
 
     console.log("row:", row);
     console.log("col:", col);
