@@ -43,6 +43,15 @@ public class Joininfo extends HttpServlet {
 			req.getRequestDispatcher("/join.jsp").forward(req, resp);
 		}
 	}
+	
+	// 실제 중복 확인 로직을 구현하는 메서드
+    private boolean checkIfUserExists(String id, String password) {
+        // 여기에 데이터베이스 조회 등의 로직을 작성해야 합니다.
+        // 예를 들어, 이미 등록된 아이디인 경우 true를 반환하고,
+        // 그렇지 않은 경우 false를 반환하는 식으로 구현합니다.
+        // 실제로는 데이터베이스와 연동하여 확인하는 과정이 필요합니다.
+        return true; // 가정으로 이미 있는 것으로 처리
+    }
 
 //	@Override
 //	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

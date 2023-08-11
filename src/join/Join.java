@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 import javax.servlet.annotation.WebServlet;
 
-import dbutil.DBUtil;
 import DButil.dbutil;
 
 public class Join {
