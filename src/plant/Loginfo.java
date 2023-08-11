@@ -1,18 +1,18 @@
 package plant;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @WebServlet("/Loginfo")
 public class Loginfo extends HttpServlet {
@@ -23,9 +23,12 @@ public class Loginfo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String userId = req.getParameter("userId");
-		String userPassword = req.getParameter("userPassword");
+		String userId = req.getParameter("id");
+		String userPassword = req.getParameter("password");
 		HttpSession session = req.getSession();
+
+		System.out.println(userId);
+		System.out.println(userPassword);
 
 		String jdbcUrl = "jdbc:mysql://192.168.0.81:3306/team3";
 		String dbUser = "Team3";
@@ -45,26 +48,20 @@ public class Loginfo extends HttpServlet {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if (resultSet.next()) {
-				// 로그인 성공
-				session.setAttribute("userId", userId);
-				resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-				resp.setHeader("Pragma", "no-cache");
-				resp.setHeader("Expires", "0");
-				resp.getWriter().println("success");
+				String id = resultSet.getString("userId");
+				session.setAttribute("userId", id);
+				
+				resp.sendRedirect("/333/main.html");
 			} else {
 				// 로그인 실패
-				System.out.println("로그인 실패: 아이디 또는 비밀번호 불일치");
 				resp.getWriter().println("fail");
 			}
 
 			resultSet.close();
 			preparedStatement.close();
 			connection.close();
-		} catch (ClassNotFoundException ex) {
-			ex.printStackTrace();
-			resp.getWriter().println("error");
-		} catch (SQLException ex) {
-			ex.printStackTrace();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 			resp.getWriter().println("error");
 		}
 	}

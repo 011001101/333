@@ -405,7 +405,6 @@ var okButtonId = null;
 <%Map<String, List<String>> m = (Map<String, List<String>>) session.getAttribute("gamein");
 if (m.get("ok") != null) {
 	List<String> ok = m.get("ok");
-	System.out.println(ok.toString());
 	for (int i = 0; i < ok.size(); i++) {
 		String a = ok.get(i);%>
 	okButtonId = "<%=a%>";
@@ -416,7 +415,6 @@ console.log(okButtonId);
 }
 if (m.get("no") != null) {
 List<String> no = m.get("no");
-System.out.println(no.toString());
 for (int i = 0; i < no.size(); i++) {
 String a = no.get(i);%>
 okButtonId = "<%=a%>";
@@ -445,7 +443,7 @@ sessionStorage.setItem("imglistJ", imglist);
 	    for (var j = 0; j < elements.length; j++) {
 	        if (elements[j].getAttribute("name") === ok) {
 	        	console.log("여기");
-	            elements[j].style.backgroundImage = "url('img/plant.svg')";
+	            elements[j].style.backgroundImage = "url('img/Pplant.svg')";
 	        }
 	    }
 	    sessionStorage.removeItem("ok" + i);
@@ -460,7 +458,7 @@ sessionStorage.setItem("imglistJ", imglist);
 	    var elementsno = document.querySelectorAll(".plant");
 	    for (var j = 0; j < elementsno.length; j++) {
 	        if (elementsno[j].getAttribute("name") === no) {
-	            elementsno[j].style.backgroundImage = "url('img/춘식2.png')";
+	            elementsno[j].style.backgroundImage = "url('img/seedplant.svg')";
 	        }
 	    }
 	    sessionStorage.removeItem("no" + i);
@@ -473,7 +471,6 @@ sessionStorage.setItem("imglistJ", imglist);
 	    plantpot.addEventListener('click', () => {
 	    	var buttonId = plantpot.getAttribute('name');
 	        sessionStorage.setItem("buttonId", buttonId);
-	        
 	        const computedStyle = window.getComputedStyle(plantpot);
 	        const backgroundImage = computedStyle.getPropertyValue('background-image');
 	        const urlRegex = /url\("(.+)"\)/;
@@ -481,10 +478,10 @@ sessionStorage.setItem("imglistJ", imglist);
 	        
 	        if (matches && matches.length > 1) {
 	            const imageUrl = decodeURIComponent(matches[1]); // URL 디코딩
-		            if (imageUrl.includes('img/춘식2.png')) {
+		            if (imageUrl.includes('img/seedplant.svg')) {
 		    	    	alert('기다려!');
 		    	    	window.location.href = "/333/game";
-		    	    } else if (imageUrl.includes('img/plant.svg')) {
+		    	    } else if (imageUrl.includes('img/Pplant.svg')) {
 		    			// 수확 가능 db에서 수확 했다고 바꾸기
 		    			sessionStorage.setItem("plant", "plant");
 		    	        const xhr = new XMLHttpRequest();
