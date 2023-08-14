@@ -105,5 +105,7 @@
 		var point = '<%=session.getAttribute("point")%>';
       </script>
       <script src="scriptShop.js"></script>
+
     
 </body>
+
