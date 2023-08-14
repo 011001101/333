@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang ="ko">
 
@@ -8,8 +8,8 @@
 <meta charset="UTF-8" />
 
 
-<link rel="stylesheet" href="shopMain.css">
-<link rel="stylesheet" href="inven.css">
+<link rel="stylesheet" href="ShopMain.css">
+<link rel="stylesheet" href="Shopinven.css">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
   
@@ -96,13 +96,15 @@
   
 
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script >
-      var imglistShop = '<%=session.getAttribute("imglistShop")%>';
-	  sessionStorage.setItem("imglistShop", imglistShop);
-      var imglistInv = '<%=session.getAttribute("imglistInv")%>';
-	  sessionStorage.setItem("imglistInv", imglistInv);
-      </script>
-      
       <script src="shopMain.js"></script>
+      <script>
+      	var imglistShop = '<%=session.getAttribute("imglistShop")%>';
+		sessionStorage.setItem("imglistShop", imglistShop);
+		var imglistInv = '<%=session.getAttribute("imglistInv")%>';
+		sessionStorage.setItem("imglistInv", imglistInv);
+		var point = '<%=session.getAttribute("point")%>';
+		sessionStorage.setItem("point", point);
+      </script>
       <script src="scriptShop.js"></script>
+    
 </body>

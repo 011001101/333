@@ -49,7 +49,9 @@ public class Loginfo extends HttpServlet {
 
 			if (resultSet.next()) {
 				String id = resultSet.getString("userId");
+				int point = resultSet.getInt("point");
 				session.setAttribute("userId", id);
+				session.setAttribute("point", point);
 				
 				resp.sendRedirect("/333/main.html");
 			} else {

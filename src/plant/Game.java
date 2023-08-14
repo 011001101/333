@@ -63,6 +63,7 @@ public class Game extends HttpServlet {
 		System.out.println(id);
 		if (plant != null && plant.equals("plant")) {
 			if (but != null) {
+				System.out.println("여기");
 				String plantName = itemplus1(id, but);// 뽑은 식물 이름 가져옴
 				int plantNo = shopNo(plantName);// 상점의 뽑은 식물 번호 가져오기
 				updateInven(id, plantNo);// 인벤토리에 추가

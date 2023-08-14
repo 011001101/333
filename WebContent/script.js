@@ -38,9 +38,10 @@ console.log("사용");
 
  //클릭시 각각의 셀로 상호작용 (안에 메소드 고쳐주시면 됩니다롱) 
  function toggleItem(event) {
-     const row = parseInt(event.target.getAttribute("data-row"));
-     const col = parseInt(event.target.getAttribute("data-col"));
- 	const buttonId = sessionStorage.getItem("buttonId");
+     const row = parseInt(event.target.parentElement.getAttribute("data-row"));
+     const col = parseInt(event.target.parentElement.getAttribute("data-col"));
+
+const buttonId = sessionStorage.getItem("buttonId");
  	sessionStorage.setItem("buttonId", buttonId);
      if (inventory[row][col]) {
          inventory[row][col] = null;

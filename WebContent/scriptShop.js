@@ -64,31 +64,36 @@ if(imglistShop != null){
 propertyCount1 = Object.keys(imglistShop).length;
 }
 
+var imglistInvJson = sessionStorage.getItem("imglistInv");
+var imglistInv = JSON.parse(imglistInvJson);
+var propertyCount2 = 0;
+if(imglistInv != null){
+	propertyCount2 = Object.keys(imglistInv).length;
+}
 
 const inventorySize = 5;
 let inventory = Array.from({ length: inventorySize }, () => Array(inventorySize).fill(null));
 
 // 인벤토리 그리기
 function drawInventory() {
-    const inventoryContainer = document.getElementById("BuyInventory");
+   const inventoryContainer = document.getElementById("BuyInventory");
     inventoryContainer.innerHTML = "";
-
     for (let row = 0; row < inventorySize; row++) {
         for (let col = 0; col < inventorySize; col++) {
             const cell = document.createElement("div");
           
             cell.classList.add("cell");
             
-            cell.setAttribute("data-row", row);
-            cell.setAttribute("data-col", col);
-        
-				var imgIndex = (row * inventorySize) + col;
-				if(propertyCount1 > imgIndex){
-               		const img = document.createElement("img");
-                	img.src = "data:image/png;base64," + imglistShop[imgIndex];
-                	cell.appendChild(img);
-				}
-                cell.textContent = inventory[row][col];
+            cell.setAttribute("data-rowon", row);
+            cell.setAttribute("data-colon", col);
+			 cell.draggable=true;
+			var imgIndex = (row * inventorySize) + col;
+			if(propertyCount1 > imgIndex){
+				console.log("사용");
+               	const img = document.createElement("img");
+                img.src = "data:image/png;base64," + imglistShop[imgIndex];
+                cell.appendChild(img);
+			}
 
             cell.addEventListener("click", toggleItem);
             inventoryContainer.appendChild(cell);
@@ -99,16 +104,11 @@ function drawInventory() {
 
 
 // 인벤토리 그리기2
-var imglistInvJson = sessionStorage.getItem("imglistInv");
-var imglistInv = JSON.parse(imglistInvJson);
-var propertyCount2 = 0;
-if(imglistInv != null){
-	propertyCount2 = Object.keys(imglistInv).length;
-}
+
 
 function drawInventory2() {
   const inventoryContainer = document.getElementById("SellInventory");
-  inventoryContainer.innerHTML = "";
+    inventoryContainer.innerHTML = "";
 
   for (let row = 0; row < inventorySize; row++) {
       for (let col = 0; col < inventorySize; col++) {
@@ -118,13 +118,15 @@ function drawInventory2() {
           
           cell.setAttribute("data-row", row);
           cell.setAttribute("data-col", col);
-      
-              var imgIndex = (row * inventorySize) + col;
-				if(propertyCount2 > imgIndex){
-               		const img = document.createElement("img");
-                	img.src = "data:image/png;base64," + imglistInv[imgIndex];
-                	cell.appendChild(img);
-				}
+      	  cell.draggable=true;
+			
+
+          var imgIndex = (row * inventorySize) + col;
+			if(propertyCount2 > imgIndex){
+               	const img = document.createElement("img");
+                img.src = "data:image/png;base64," + imglistInv[imgIndex];
+                cell.appendChild(img);
+			}
 
           cell.addEventListener("click", toggleItem2);
           inventoryContainer.appendChild(cell);
@@ -134,33 +136,86 @@ function drawInventory2() {
 
 
 function toggleItem(event) {
-  const row = parseInt(event.target.getAttribute("data-row"));
-  const col = parseInt(event.target.getAttribute("data-col"));
+     const row = parseInt(event.target.parentElement.getAttribute("data-rowon"));
+   	 const col = parseInt(event.target.parentElement.getAttribute("data-colon"));
 
-  if (inventory[row][col]) {
-      inventory[row][col] = null;
-  } else {
-      // 여기에서 아이템 정보를 입력하면 됩니다.
-      // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-      inventory[row][col] = "아이템"+[row]+[col];
-  }
-
+if (inventory[row][col]) {
+         inventory[row][col] = null;
+     } else {
+var point = 0;
+	if(row == 0 && col == 0){
+		point = 100;
+	}else if(row == 0 && col == 1){
+		point = 60;
+	}else if(row == 0 && col == 2){
+		point = 20;
+	}else if(row == 0 && col == 3){
+		point = 30;
+	}else if(row == 0 && col == 4){
+		point = 80;
+	}else if(row == 1 && col == 0){
+		point = 40;
+	}else if(row == 1 && col == 1){
+		point = 65;
+	}else if(row == 1 && col == 2){
+		point = 70;
+	}else if(row == 1 && col == 3){
+		point = 85;
+	}
+	if(point != 0){
+var userInput = prompt("몇 개 구매 하시나용?"+"");
+var num1;
+num1 = userInput;
+var byit = num1 * point;
+var userpoint = sessionStorage.getItem("point");
+if(userpoint >= byit){
+	alert(userInput+"개 구매 완.");
+	sessionStorage.removeItem("invencltw");
+	
+ 	sessionStorage.setItem("invenclon", byit);
+ 	sessionStorage.setItem("pointnum", point);
+ 	const xhr = new XMLHttpRequest();
+ 	xhr.open("POST", "/333/shop", true);
+ 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 	xhr.onreadystatechange = function() {
+ 	if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+	    window.location.href = "/333/shop";
+    	}
+ 	};
+ 	xhr.send("invenclon=" + encodeURIComponent(byit)+"&pointnum=" + encodeURIComponent(point));
+}else{
+	alert(userInput+"개 구매 할 돈이 없습니다.");
+}
   drawInventory();
 }
-
+}
+}
 
 function toggleItem2(event) {
-  const row = parseInt(event.target.getAttribute("data-row"));
-  const col = parseInt(event.target.getAttribute("data-col"));
+  const row = parseInt(event.target.parentElement.getAttribute("data-row"));
+  const col = parseInt(event.target.parentElement.getAttribute("data-col"));
 
-  if (inventory[row][col]) {
-      inventory[row][col] = null;
-  } else {
-      // 여기에서 아이템 정보를 입력하면 됩니다.
-      // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-      inventory[row][col] = "아이템"+[row]+[col];
-  }
+if (inventory[row][col]) {
+         inventory[row][col] = null;
+     } else {
 
+ 	const r = (row*inventorySize)+col;
+	if(propertyCount2 > r){
+	sessionStorage.removeItem("invenclon");
+ 	sessionStorage.setItem("invencltw", r);
+ 	const xhr = new XMLHttpRequest();
+ 	xhr.open("POST", "/333/shop", true);
+ 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 	xhr.onreadystatechange = function() {
+ 	if (xhr.readyState === 4 && xhr.status === 200) {
+    		console.log(xhr.responseText);
+			window.location.href = "/333/shop";
+    	}
+ 	};
+ 	xhr.send("invencltw=" + r);
+}
+}
   drawInventory2();
 }
 
