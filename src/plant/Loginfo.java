@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/Loginfo")
 public class Loginfo extends HttpServlet {
 	
 	@Override
@@ -51,7 +50,7 @@ public class Loginfo extends HttpServlet {
 				String id = resultSet.getString("userId");
 				session.setAttribute("userId", id);
 				
-				resp.sendRedirect("/333/main.html");
+				resp.sendRedirect("/333/main.jsp");
 			} else {
 				// 로그인 실패
 				resp.getWriter().println("fail");

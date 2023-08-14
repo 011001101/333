@@ -11,11 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/Joininfo") 
 public class Joininfo extends HttpServlet {
 
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/join.jsp").forward(req, resp);
+		
+	}
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("포스트 진입헀니?");
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
 		HttpSession session = req.getSession();
@@ -24,12 +29,14 @@ public class Joininfo extends HttpServlet {
 		if (join.validateId(id) && join.validatePassword(password)) {
 			if (!join.duplication(id)) { // 중복되지 않는 아이디일 경우
 				if (join.joinst(id, password)) { // 회원 가입 성공 시
+					System.out.println("가입 성공된ㄷ듯");
 					resp.setContentType("text/html; charset=utf-8");
 					PrintWriter writer = resp.getWriter();
 					writer.println(id + "님 회원가입되셨습니다.");
 					writer.println("환영합니다.");
 					writer.close();
-					doGet(req, resp);
+					//doGet(req, resp);
+					resp.sendRedirect("/333/login.jsp");
 				} else { // 회원 가입 실패 시
 					session.setAttribute("fal", "회원 가입에 실패하였습니다.");
 					req.getRequestDispatcher("/join.jsp").forward(req, resp);
@@ -53,11 +60,6 @@ public class Joininfo extends HttpServlet {
         return true; // 가정으로 이미 있는 것으로 처리
     }
 
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.getRequestDispatcher("/join.jsp").forward(req, resp);
-//
-//	}
 
 //	@Override
 //	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
