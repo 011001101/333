@@ -38,10 +38,10 @@ public class shopInven extends HttpServlet {
 		String imglistShop = gson.toJson(imgEncode);
 		session.setAttribute("imglistShop", imglistShop);
 
-		imglist = invenitem((String) session.getAttribute("userId"));
+		List<byte[]> invenimglist = invenitem((String) session.getAttribute("userId"));
 		List<String> imgInven = new ArrayList<>();
-		for (int j = 0; j < imglist.size(); j++) {
-			String encodeStr = encode.encodeToString(imglist.get(j));
+		for (int j = 0; j < invenimglist.size(); j++) {
+			String encodeStr = encode.encodeToString(invenimglist.get(j));
 			imgInven.add(encodeStr);
 		}
 		String imglistInv = gson.toJson(imgInven);

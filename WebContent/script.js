@@ -4,7 +4,7 @@ var propertyCount = Object.keys(imglist).length;
  // 인벤 그리기 
  const inventorySize = 9;
  let inventory = Array.from({ length: inventorySize }, () => Array(inventorySize).fill(null));
-
+console.log("사용");
  // 인벤토리 그리기
  function drawInventory() {
      const inventoryContainer = document.getElementById("inventory");

@@ -1,5 +1,5 @@
   function shopgo() {
-    window.location.href = "shop.jsp";
+    window.location.href = "shop";
  }
 
  function encygo() {

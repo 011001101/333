@@ -59,7 +59,10 @@ $('.sidebar_menu2').hide();
 // 인벤 그리기 
 var imglistShopJson = sessionStorage.getItem("imglistShop");
 var imglistShop = JSON.parse(imglistShopJson);
-var propertyCount1 = Object.keys(imglistShop).length;
+var propertyCount1= 0;
+if(imglistShop != null){
+propertyCount1 = Object.keys(imglistShop).length;
+}
 
 
 const inventorySize = 5;
@@ -79,7 +82,6 @@ function drawInventory() {
             cell.setAttribute("data-row", row);
             cell.setAttribute("data-col", col);
         
-            if (inventory[row][col]) {
 				var imgIndex = (row * inventorySize) + col;
 				if(propertyCount1 > imgIndex){
                		const img = document.createElement("img");
@@ -87,7 +89,6 @@ function drawInventory() {
                 	cell.appendChild(img);
 				}
                 cell.textContent = inventory[row][col];
-            }
 
             cell.addEventListener("click", toggleItem);
             inventoryContainer.appendChild(cell);
@@ -100,7 +101,10 @@ function drawInventory() {
 // 인벤토리 그리기2
 var imglistInvJson = sessionStorage.getItem("imglistInv");
 var imglistInv = JSON.parse(imglistInvJson);
-var propertyCount2 = Object.keys(imglistInv).length;
+var propertyCount2 = 0;
+if(imglistInv != null){
+	propertyCount2 = Object.keys(imglistInv).length;
+}
 
 function drawInventory2() {
   const inventoryContainer = document.getElementById("SellInventory");
