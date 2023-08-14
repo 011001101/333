@@ -1,4 +1,7 @@
-
+function goBack() {
+  // main.jsp로 페이지 이동
+  window.location.href = 'main.html';
+}
 function disableMouseDrag() {
    // 마우스 드래그 이벤트를 처리하는 함수
    function preventDefault(event) {

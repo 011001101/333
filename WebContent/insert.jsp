@@ -54,10 +54,10 @@
     </div>
     <script>
         document.getElementById("loginButton").addEventListener("click", function() {
-            window.location.href = "/333/Loginfo";
+            window.location.href = "Loginfo";
         });
         document.getElementById("joinButton").addEventListener("click", function() {
-            window.location.href = "join.jsp";
+            window.location.href = "Joininfo";
         });
     </script>
 </body>

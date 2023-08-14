@@ -34,8 +34,8 @@
 }
 
 #goBackButton img {
-  width: 30px; /* 이미지 너비 조절 */
-  height: 30px; /* 이미지 높이 조절 */
+  width: 30px; 
+  height: 30px; 
 }
 
 .rabbit {

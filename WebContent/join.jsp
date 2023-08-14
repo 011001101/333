@@ -31,7 +31,8 @@
 </form>
     <p id="message"></p>
   </div>
-  
   <script src="join.js"></script>
+  <!-- 
+   -->
 </body>
 </html>

@@ -90,3 +90,7 @@ function typeWriter(id, ar) {
 }
 }
 
+function goBack() {
+  // main.jsp로 페이지 이동
+  window.location.href = 'main.html';
+}
