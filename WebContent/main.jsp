@@ -51,7 +51,7 @@
             </div>
          </div>
          <div class="NPC" name="NPC" data-description="토끼 집으로🔥" type="button"
-            onclick="alert('준비중')">
+            onclick="npcgo()">
             <div class="MAP-inner">
                <div class="title">토끼의 집</div>
                <div class="description">토끼 집으로 이동</div>
@@ -62,7 +62,7 @@
 
    <footer>
       <audio autoplay controls>
-         <source src="audio/The_Weeknd-I_Feel_It_Coming(cover_byJ.Fla).mp3"
+         <source src="img/브금좀찾아봐라.mp3"
             type="audio/mp3">
       </audio>
    </footer>

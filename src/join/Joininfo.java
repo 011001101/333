@@ -16,6 +16,7 @@ public class Joininfo extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("서블릿 진입하니?");
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
 		HttpSession session = req.getSession();
@@ -35,10 +36,13 @@ public class Joininfo extends HttpServlet {
 					req.getRequestDispatcher("/join.jsp").forward(req, resp);
 				}
 			} else { // 중복된 아이디인 경우
+				System.out.println("두번째 엘스");
 				session.setAttribute("fal", "이미 사용 중인 아이디입니다.");
 				req.getRequestDispatcher("/join.jsp").forward(req, resp);
 			}
 		} else {
+			System.out.println(join.validateId(id) + "불린" + join.validateId(password));
+			System.out.println("세번째 엘스");
 			session.setAttribute("fal", "아이디와 비밀번호를 형식에 맞게 입력하세요.");
 			req.getRequestDispatcher("/join.jsp").forward(req, resp);
 		}
@@ -53,11 +57,11 @@ public class Joininfo extends HttpServlet {
         return true; // 가정으로 이미 있는 것으로 처리
     }
 
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.getRequestDispatcher("/join.jsp").forward(req, resp);
-//
-//	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/login.jsp").forward(req, resp);
+
+	}
 
 //	@Override
 //	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

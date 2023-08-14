@@ -68,6 +68,10 @@ public class Game extends HttpServlet {
 				int plantNo = shopNo(plantName);// 상점의 뽑은 식물 번호 가져오기
 				updateInven(id, plantNo);// 인벤토리에 추가
 				setplant(id, but);// 식물 뽑았다고 바꿈
+				int ex = exp(plantName);
+				int now = (int) session.getAttribute("exp");
+				session.setAttribute("exp", now + ex);
+				upexp(id, now + ex);
 			}
 		} else {
 			List<Integer> nolist = itemNo(id);
@@ -413,5 +417,47 @@ public class Game extends HttpServlet {
 			dbutil.close(conn);
 		}
 		return 0;
+	}
+
+	public int exp(String plantname) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM shop where itemName = ?;";
+		try {
+			conn = dbutil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, plantname);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt("itemPoint");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbutil.close(rs);
+			dbutil.close(stmt);
+			dbutil.close(conn);
+		}
+		return 0;
+	}
+
+	public int upexp(String id, int exp) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		String sql = "UPDATE user SET exp = ? WHERE (userId = ?);";
+		try {
+			conn = dbutil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, exp);
+			stmt.setString(2, id);
+			return stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbutil.close(stmt);
+			dbutil.close(conn);
+		}
+		return -1;
 	}
 }

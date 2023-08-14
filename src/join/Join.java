@@ -69,7 +69,7 @@ public class Join {
 			conn = dbutil.getConnection();
 
 			// SQL 쿼리 작성
-			String sql = "select * from student where id = ? ";
+			String sql = "select * from user where userId = ? ";
 
 			// SQL 쿼리 실행
 			stmt = conn.prepareStatement(sql);

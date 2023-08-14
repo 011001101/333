@@ -3,9 +3,12 @@
  }
 
  function encygo() {
-    window.location.href = "encyclopedia.jsp";
+    window.location.href = "ency.jsp";
  }
 
  function gamego() {
     window.location.href = "game";
+ }
+ function npcgo() {
+    window.location.href = "npc.jsp";
  }

@@ -19,7 +19,7 @@
   <div class="b"></div>
   <div class="join-container">
     <h1>Join</h1>
-   <form action="Joininfo" method="post">
+   <form method="post">
   <div class="tooltip" title="ID는 2~4자 사이 소문자, 숫자로만 이루어져야 합니다.">
     <input type="text" name="id" placeholder="ID">
   </div>
@@ -31,7 +31,8 @@
 </form>
     <p id="message"></p>
   </div>
-  
   <script src="join.js"></script>
+  <!-- 
+   -->
 </body>
 </html>
