@@ -64,7 +64,6 @@ if(imglistShop != null){
 propertyCount1 = Object.keys(imglistShop).length;
 }
 
-
 const inventorySize = 5;
 let inventory = Array.from({ length: inventorySize }, () => Array(inventorySize).fill(null));
 
@@ -79,16 +78,16 @@ function drawInventory() {
           
             cell.classList.add("cell");
             
-            cell.setAttribute("data-row", row);
-            cell.setAttribute("data-col", col);
+            cell.setAttribute("data-rowon", row);
+            cell.setAttribute("data-colon", col);
         
-				var imgIndex = (row * inventorySize) + col;
-				if(propertyCount1 > imgIndex){
-               		const img = document.createElement("img");
-                	img.src = "data:image/png;base64," + imglistShop[imgIndex];
-                	cell.appendChild(img);
-				}
-                cell.textContent = inventory[row][col];
+			var imgIndex = (row * inventorySize) + col;
+			if(propertyCount1 > imgIndex){
+				console.log("사용");
+               	const img = document.createElement("img");
+                img.src = "data:image/png;base64," + imglistShop[imgIndex];
+                cell.appendChild(img);
+			}
 
             cell.addEventListener("click", toggleItem);
             inventoryContainer.appendChild(cell);
@@ -116,8 +115,8 @@ function drawInventory2() {
         
           cell.classList.add("cell");
           
-          cell.setAttribute("data-row", row);
-          cell.setAttribute("data-col", col);
+          cell.setAttribute("data-rowtw", row);
+          cell.setAttribute("data-coltw", col);
       
               var imgIndex = (row * inventorySize) + col;
 				if(propertyCount2 > imgIndex){
@@ -134,33 +133,84 @@ function drawInventory2() {
 
 
 function toggleItem(event) {
-  const row = parseInt(event.target.getAttribute("data-row"));
-  const col = parseInt(event.target.getAttribute("data-col"));
+  const row = parseInt(event.target.getAttribute("data-rowon"));
+  const col = parseInt(event.target.getAttribute("data-colon"));
 
-  if (inventory[row][col]) {
-      inventory[row][col] = null;
-  } else {
-      // 여기에서 아이템 정보를 입력하면 됩니다.
-      // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-      inventory[row][col] = "아이템"+[row]+[col];
-  }
+if (inventory[row][col]) {
+         inventory[row][col] = null;
+     } else {
+var point;
+	if(row == 0 && col == 0){
+		point = 100;
+	}else if(row == 0 && col == 1){
+		point = 60;
+	}else if(row == 0 && col == 2){
+		point = 20;
+	}else if(row == 0 && col == 3){
+		point = 30;
+	}else if(row == 0 && col == 4){
+		point = 80;
+	}else if(row == 1 && col == 0){
+		point = 40;
+	}else if(row == 1 && col == 1){
+		point = 65;
+	}else if(row == 1 && col == 2){
+		point = 70;
+	}else if(row == 1 && col == 3){
+		point = 85;
+	}
+	
+var userInput = prompt("몇 개 구매 하시나용?"+"");
+var num1;
+num1 = userInput;
+var byit = num1 * point;
 
+alert(userInput+"개 판매 완.");
+	sessionStorage.removeItem("invencltw");
+ 	const r = (row*9)+col;
+ 	sessionStorage.setItem("invenclon", r);
+ 	const xhr = new XMLHttpRequest();
+ 	xhr.open("POST", "/333/shop", true);
+ 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 	xhr.onreadystatechange = function() {
+ 	if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+	    window.location.href = "/333/shop";
+    	}
+ 	};
+ 	xhr.send("invenclon=" + r);
+}
   drawInventory();
 }
 
 
 function toggleItem2(event) {
-  const row = parseInt(event.target.getAttribute("data-row"));
-  const col = parseInt(event.target.getAttribute("data-col"));
+  const row = parseInt(event.target.getAttribute("data-rowtw"));
+  const col = parseInt(event.target.getAttribute("data-coltw"));
 
-  if (inventory[row][col]) {
-      inventory[row][col] = null;
-  } else {
-      // 여기에서 아이템 정보를 입력하면 됩니다.
-      // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
-      inventory[row][col] = "아이템"+[row]+[col];
-  }
+if (inventory[row][col]) {
+         inventory[row][col] = null;
+     } else {
 
+var userInput = prompt("몇 개 판매 하시나용?"+"");
+alert(userInput+"개 판매 완.");
+var num1;
+num1 = userInput;
+
+ 	const r = (row*9)+col;
+	sessionStorage.removeItem("invenclon");
+ 	sessionStorage.setItem("invencltw", r);
+ 	const xhr = new XMLHttpRequest();
+ 	xhr.open("POST", "/333/shop", true);
+ 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 	xhr.onreadystatechange = function() {
+ 	if (xhr.readyState === 4 && xhr.status === 200) {
+    		console.log(xhr.responseText);
+	 		window.location.href = "/333/shop";
+    	}
+ 	};
+ 		   	xhr.send("invencltw=" + r);
+}
   drawInventory2();
 }
 

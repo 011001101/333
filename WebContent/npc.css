@@ -1,0 +1,124 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Cafe24Dangdanghae";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.2/Cafe24Dangdanghae.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.html {
+  overflow: hidden;
+}
+
+.body {
+  font-family: "Cafe24Dangdanghae";
+  position: relative;
+  text-align: center;
+  position: fixed;
+}
+
+.goBack {
+  position: absolute;
+  text-align: center;
+  width: 128px;
+  height: 32px;
+  top: 40px;
+  left: 40px;
+  cursor: pointer;
+}
+
+#goBackButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#goBackButton img {
+  width: 30px; /* 이미지 너비 조절 */
+  height: 30px; /* 이미지 높이 조절 */
+}
+
+.rabbit {
+  position: relative;
+  text-align: center;
+  align-self: center;
+  background: url("img/innpc.svg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  margin-inline: 4px;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.usaginpc {
+  background: url("img/usaginpc.svg") no-repeat;
+  background-size: cover;
+  width: 600px;
+  height: 600px;
+  margin-inline: 4px;
+  z-index: 1;
+  position: absolute;
+  top: 25%;
+  left: 38%;
+}
+
+.text {
+  position: absolute;
+  top: 55%;
+  font-family: "Cafe24Dangdanghae";
+  font-size: 35pt;
+  text-align: center;
+  margin-left: 28%;
+  cursor: pointer;
+}
+
+.dialogBox {
+  position: absolute;
+  top: 70%;
+  text-align: center;
+  background: url("img/dialogBox.svg");
+  background-size: cover;
+  z-index: 5;
+  margin-inline: 2px;
+  width: 100vw;
+  height: 28%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.output {
+  position: absolute;
+  text-align: center;
+  margin-inline: 4px;
+  top: 65px;
+  left: 148px;
+  font-family: "Cafe24Dangdanghae";
+  color: rgb(35, 35, 43);
+}
+.output h1 {
+  font-size: 30px;
+}
+
+/* Cursor Styling */
+.cursor::after {
+  content: "";
+  display: inline-block;
+  margin-left: 3px;
+  background-color: black;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+h1.cursor::after {
+  height: 24px;
+  width: 13px;
+}
+
+p.cursor::after {
+  height: 13px;
+  width: 6px;
+}

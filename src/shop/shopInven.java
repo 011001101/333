@@ -28,9 +28,9 @@ public class shopInven extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		Gson gson = new Gson();
+		Encoder encode = Base64.getEncoder();
 		List<byte[]> imglist = item(); // 이미지 byte 타입으로 가져오기
 		List<String> imgEncode = new ArrayList<>();
-		Encoder encode = Base64.getEncoder();
 		for (int j = 0; j < imglist.size(); j++) {
 			String encodeStr = encode.encodeToString(imglist.get(j));
 			imgEncode.add(encodeStr);
@@ -47,7 +47,18 @@ public class shopInven extends HttpServlet {
 		String imglistInv = gson.toJson(imgInven);
 		session.setAttribute("imglistInv", imglistInv);
 
-		req.getRequestDispatcher("/ShopMain.html").forward(req, resp);
+		req.getRequestDispatcher("/ShopMain.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String invenclon = req.getParameter("invenclon");
+		String invencltw = req.getParameter("invencltw");
+		if (invenclon != null) {
+
+		} else {
+
+		}
 	}
 
 	public List<byte[]> item() {
@@ -56,7 +67,7 @@ public class shopInven extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM shop;";
+		String sql = "SELECT * FROM shop where itemName NOT LIKE '%.%' group by itemGroup;";
 		try {
 			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -81,7 +92,7 @@ public class shopInven extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT itemImage FROM inventory AS a INNER JOIN shop AS b ON a.shopNo = b.no WHERE a.userId = ? group by shopNo;";
+		String sql = "SELECT itemImage FROM inventory AS a INNER JOIN shop AS b ON a.shopNo = b.no WHERE a.userId = ? group by b.no;";
 		try {
 			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
