@@ -1,5 +1,4 @@
-![image](https://github.com/011001101/333/assets/134483432/04ff9430-55d0-4620-869f-550562d5d98a)# 333
-plants
+
 # 토끼마을에서 허브를 키워 토끼들과 친해져보아요
 ![image](https://github.com/011001101/333/assets/134483432/bed52b7a-72e8-47de-972d-a6472c7e60fe)
 
