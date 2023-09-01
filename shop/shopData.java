@@ -22,7 +22,6 @@ public class shopData {
 			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement("SELECT * FROM shop WHERE no = ?");
 			stmt.setInt(1, num);
-
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
