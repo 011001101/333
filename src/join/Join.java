@@ -36,7 +36,6 @@ public class Join {
 				System.out.println("여기2");
 				return false;
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

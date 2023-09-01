@@ -48,7 +48,6 @@ public class Joininfo extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/join.jsp").forward(req, resp);
-
 	}
 	
 	public boolean test(String id) {
