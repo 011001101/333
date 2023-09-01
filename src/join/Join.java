@@ -21,7 +21,6 @@ public class Join {
 		try {
 			conn = dbutil.getConnection();
 			stmt = conn.prepareStatement(sql);
-
 			stmt.setString(1, id);
 			stmt.setString(2, password);
 

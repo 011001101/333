@@ -50,7 +50,6 @@ public class Joininfo extends HttpServlet {
 		req.getRequestDispatcher("/join.jsp").forward(req, resp);
 
 	}
-
 	
 	public boolean test(String id) {
 		Connection conn = null;
