@@ -13,7 +13,7 @@
     <script src='ency.js'></script>
 </head>
 <body>
-
+<div class="goBack" id="goBack" onclick="goBack()"></div>
 
     <div id="book">
         <div class="cover"><h1>토끼마을 식물 도감</h1></div>
@@ -109,6 +109,9 @@ var Image = URL
 				$('#book').turn('next');
 
 	});
-
+	function goBack() {
+		  // main.jsp로 페이지 이동
+		  window.location.href = 'main.html';
+		}
 </script>
 </html>

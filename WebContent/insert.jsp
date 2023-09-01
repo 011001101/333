@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -52,6 +54,13 @@
         <button id="loginButton" class="custom-button">Login</button>
         <button id="joinButton" class="custom-button">Join</button>
     </div>
+    <script >
+    <%if(session.getAttribute("true") != null){
+    %>
+    alert("회원가입이 완료되었습니다.");
+    <%session.removeAttribute("true");
+    }%>
+    </script>
     <script>
         document.getElementById("loginButton").addEventListener("click", function() {
             window.location.href = "Loginfo";

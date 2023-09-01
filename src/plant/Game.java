@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-import com.mysql.cj.jdbc.SuspendableXAConnection;
 
 import DButil.dbutil;
 import eventloop.MyFlowerEventListener;

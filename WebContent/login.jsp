@@ -26,5 +26,12 @@
     <p id="message"></p>
   </div>
   <!-- <script src="login.js"></script> -->
+  <script>
+  <%if(session.getAttribute("loginfal") != null){
+  %>
+  alert("아이디나 비밀번호를 확인하세요.");
+  <%session.removeAttribute("loginfal");
+  }%>
+  </script>
 </body>
 </html>

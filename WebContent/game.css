@@ -217,15 +217,21 @@
 
 .goBack {
   position: sticky;
-  width: 10rem;
-  height: 10rem;
+  width: 3rem;
+  height: 3rem;
   bottom: 95rem;
-  left: 0%;
-  background-color: rgb(255, 82, 82);
+  left: 2%;
+  margin-top : 1%;
   z-index: 3;
+   background: url("img/home.png") no-repeat;
+    background-repeat: no-repeat;
+  background-size: cover;
+  background-color:transparent;
+  
 }
 
 .Whatis {
+	margin-top:-5%;
   position: sticky;
   width: 25rem;
   height: 40rem;
@@ -235,11 +241,11 @@
 }
 
 .Status {
+	margin-top: 3%;
   position: sticky;
   width: 25rem;
   height: 20rem;
   left: 40px;
-  background-color: seagreen;
   z-index: 3;
 }
 

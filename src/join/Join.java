@@ -16,7 +16,7 @@ public class Join {
 	public boolean joinst(String id, String password) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO `team3`.`user` (`userId`, `userPassword`) VALUES (?, ?);";
+		String sql = "INSERT INTO user (userId, userPassword, point) VALUES (?, ?, 100);";
 
 		try {
 			conn = dbutil.getConnection();
@@ -25,13 +25,16 @@ public class Join {
 			stmt.setString(1, id);
 			stmt.setString(2, password);
 
-			int rowsAffected = stmt.executeUpdate();
+			int rowsAffected = 0;
+			rowsAffected = stmt.executeUpdate();
 
 			if (rowsAffected > 0) {
 				// 회원 가입이 성공적으로 이루어졌으므로, 반환할 메시지를 설정합니다.
+				System.out.println("여기");
 				return true;
 			} else {
 				// 회원 가입이 실패한 경우, 반환할 메시지를 설정합니다.a
+				System.out.println("여기2");
 				return false;
 			}
 
@@ -79,8 +82,6 @@ public class Join {
 
 			// 결과 확인
 			if (rs.next()) {
-				return true;
-			} else {
 				return false;
 			}
 		} catch (SQLException e) {
@@ -90,6 +91,6 @@ public class Join {
 			dbutil.close(stmt);
 			dbutil.close(conn);
 		}
-		return false;
+		return true;
 	}
 }

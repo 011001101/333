@@ -40,16 +40,18 @@ console.log("사용");
  function toggleItem(event) {
      const row = parseInt(event.target.parentElement.getAttribute("data-row"));
      const col = parseInt(event.target.parentElement.getAttribute("data-col"));
-
+	console.log(row);
+	console.log(col);
 const buttonId = sessionStorage.getItem("buttonId");
+console.log(buttonId);
  	sessionStorage.setItem("buttonId", buttonId);
-     if (inventory[row][col]) {
-         inventory[row][col] = null;
-     } else {
+     
          // 여기에서 아이템 정보를 입력하면 됩니다.
          // 여기서는 단순히 "아이템"이라는 문자열을 추가합니다.
  			if(buttonId != null){
  		   		const r = (row*9)+col;
+				if(propertyCount>r){
+					console.log("작동하냐");
  		   		sessionStorage.setItem("invencl", r);
  				const xhr = new XMLHttpRequest();
  		   		xhr.open("POST", "/333/game", true);
@@ -61,8 +63,10 @@ const buttonId = sessionStorage.getItem("buttonId");
  		      		}
  		    	};
  		   		xhr.send("buttonId=" + encodeURIComponent(buttonId)+"&invencl=" + r);
- 				}
-     }
+ 				}else{
+				window.location.href = "/333/game";
+}
+			}
 
      drawInventory();
  }

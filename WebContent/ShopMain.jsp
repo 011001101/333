@@ -23,7 +23,8 @@
           <div class="goBack" id="goBack" onclick="goBack()"></div>
     
     
-            <div class="Status" id="Status">상태창 자리</div>
+            <div class="Status">
+<iframe src = "status.jsp" width = "380" height = "200" ></iframe></div>
       
 
 
@@ -103,16 +104,9 @@
 		var imglistInv = '<%=session.getAttribute("imglistInv")%>';
 		sessionStorage.setItem("imglistInv", imglistInv);
 		var point = '<%=session.getAttribute("point")%>';
-<<<<<<< HEAD
 		sessionStorage.setItem("point", point);
-=======
->>>>>>> branch 'master' of https://github.com/011001101/333.git
       </script>
       <script src="scriptShop.js"></script>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/011001101/333.git
     
 </body>
 

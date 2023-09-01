@@ -61,11 +61,16 @@ public class shopInven extends HttpServlet {
 		String id = (String) session.getAttribute("userId");
 		int point = (int) session.getAttribute("point");
 		if (invenclon != null) {
+			System.out.println("작동됨?");
 			String byitem = req.getParameter("invenclon");
 			System.out.println(byitem);
 			String lispoint = req.getParameter("pointnum");
 			System.out.println(lispoint);
+			String num1 = req.getParameter("num1");
+			System.out.println(num1);
 			int min = Integer.valueOf(byitem);
+			int num = Integer.valueOf(num1);
+			System.out.println(lispoint);
 			session.setAttribute("point", point - min);
 			updatepoint(id, point - min);// 포인트 감소
 			String plunt = "씨앗주머니G";
@@ -92,15 +97,19 @@ public class shopInven extends HttpServlet {
 			System.out.println(itemlist.toString());
 			int size = itemlist.size();
 			System.out.println(size);
-			int a = (int) (Math.random() * size);
-			System.out.println(a);
-			updateInven(id, itemlist.get(a));// 아이템 추가
+			for (int i = 0; i < num; i++) {
+				int a = (int) (Math.random() * size);
+				System.out.println(a);
+				updateInven(id, itemlist.get(a));// 아이템 추가
+			}
 		} else {
 			List<Integer> list = pointpluse(id);// 포인트 받아오고
 			int inven = Integer.valueOf(invencltw);
 			int a = list.get(inven);
 			int s = updatepoint(id, point + a);// 포인트 증가
 			System.out.println(s);
+			int pointse = (int) session.getAttribute("point");
+			session.setAttribute("point", pointse + a);
 			int u = deletinv(no(id, a));// 아이템 삭제
 			System.out.println(u);
 		}

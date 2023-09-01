@@ -167,13 +167,15 @@ var userInput = prompt("몇 개 구매 하시나용?"+"");
 var num1;
 num1 = userInput;
 var byit = num1 * point;
+console.log(num1);
 var userpoint = sessionStorage.getItem("point");
-if(userpoint >= byit){
+if(num1 != "" && userpoint >= byit){
 	alert(userInput+"개 구매 완.");
 	sessionStorage.removeItem("invencltw");
 	
  	sessionStorage.setItem("invenclon", byit);
  	sessionStorage.setItem("pointnum", point);
+	sessionStorage.setItem("num1", num1);
  	const xhr = new XMLHttpRequest();
  	xhr.open("POST", "/333/shop", true);
  	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -183,7 +185,9 @@ if(userpoint >= byit){
 	    window.location.href = "/333/shop";
     	}
  	};
- 	xhr.send("invenclon=" + encodeURIComponent(byit)+"&pointnum=" + encodeURIComponent(point));
+ 	xhr.send("invenclon=" + encodeURIComponent(byit)+"&pointnum=" + encodeURIComponent(point)+"&num1=" + encodeURIComponent(num1));
+}else if(num1 == ""){
+	alert("숫자를 입력해주세요.");
 }else{
 	alert(userInput+"개 구매 할 돈이 없습니다.");
 }
@@ -195,10 +199,6 @@ if(userpoint >= byit){
 function toggleItem2(event) {
   const row = parseInt(event.target.parentElement.getAttribute("data-row"));
   const col = parseInt(event.target.parentElement.getAttribute("data-col"));
-
-if (inventory[row][col]) {
-         inventory[row][col] = null;
-     } else {
 
  	const r = (row*inventorySize)+col;
 	if(propertyCount2 > r){
@@ -214,7 +214,6 @@ if (inventory[row][col]) {
     	}
  	};
  	xhr.send("invencltw=" + r);
-}
 }
   drawInventory2();
 }

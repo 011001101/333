@@ -67,7 +67,8 @@ div::before {
   text-align: center;
   width: 20rem;
   height: 15rem;
-  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
   top: 15%;
   left: 1%;
 }
@@ -80,7 +81,7 @@ div::before {
   top: 40px;
   left: 40px;
   cursor: pointer;
-  background-image: url(img/back.jpg);
+  background-image: url(img/home.png);
   background-repeat: no-repeat;
   background-size: cover;
 }

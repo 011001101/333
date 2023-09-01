@@ -58,7 +58,8 @@ public class Loginfo extends HttpServlet {
 				resp.sendRedirect("/333/main.html");
 			} else {
 				// 로그인 실패
-				resp.getWriter().println("fail");
+				session.setAttribute("loginfal", "false");
+				req.getRequestDispatcher("/login.jsp").forward(req, resp);
 			}
 
 			resultSet.close();

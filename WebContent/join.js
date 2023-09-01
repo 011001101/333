@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('join-form').submit();
     }
   });
-
+/*
   const modalClose = document.getElementById("modalClose");
   modalClose.addEventListener("click", function() {
     var modal = document.getElementById("missing-input-modal");
     modal.style.display = "none";
   });
-});
+});*/
 
 
 function join(e) {
@@ -97,7 +97,7 @@ function validatePassword(password) {
 }
 
 // 가입하기 버튼 클릭 시 모달 띄우기
-const joinButton = document.getElementById('joinButton');
+/*const joinButton = document.getElementById('joinButton');
 joinButton.addEventListener('click', function(e) {
   e.preventDefault(); // 기본 동작 막기
   const idInput = document.querySelector('input[name="id"]');
@@ -112,3 +112,4 @@ joinButton.addEventListener('click', function(e) {
     document.getElementById('join-form').submit();
   }
 });
+*/

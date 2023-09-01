@@ -31,7 +31,8 @@
 	<header>
 		<div class="container">
 			<span id="menu"><span class="ion-navicon-round"></span></span>
-			<div class="goBack" type="button" onclick=alert(메인으로)>메인으로</div>
+          <div class="goBack" id="goBack" onclick="goBack()"></div>
+            
 
 		</div>
 	</header>
@@ -39,8 +40,11 @@
 
 
 
-	<div class="Status" type="button" onclick=alert(상태창)>상태창</div>
-	<div class="Whatis">설명적는칸</div>
+	<div class="Status">
+<iframe src = "status.jsp" width = "400" height = "200" ></iframe></div>
+	<div class="Whatis" >
+	<img src="img/게임설명창.png" alt="Whatis"></div>
+	
 
 
 
@@ -501,6 +505,10 @@ sessionStorage.setItem("imglistJ", imglist);
 	            }
 	    });
 	});
+	function goBack() {
+		  // main.jsp로 페이지 이동
+		  window.location.href = 'main.html';
+		}
 </script>
 	<script src="script.js"></script>
 </body>
